@@ -69,8 +69,8 @@ dependencies {
 
     implementation(Libraries.anko)
 
-    implementation(Libraries.navigation_fragment)
-    implementation(Libraries.navigation_ui)
+    implementation(Libraries.navigationFragment)
+    implementation(Libraries.navigationUi)
 
 
     testImplementation(TestLibraries.junit)

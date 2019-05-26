@@ -69,8 +69,8 @@ object Libraries {
     const val rxAndroid = "io.reactivex.rxjava2:rxandroid:${Versions.rxAndroid}"
     const val rxJava = "io.reactivex.rxjava2:rxjava:${Versions.rxJava}"
 
-    const val navigation_fragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigationComponent}"
-    const val navigation_ui = "androidx.navigation:navigation-ui-ktx:${Versions.navigationComponent}"
+    const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigationComponent}"
+    const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigationComponent}"
 }
 
 object TestLibraries {
