@@ -6,7 +6,7 @@
     <data>
 
         <variable name="viewModel"
-                  type="com.da62.ui.splash.SplashViewModel"/>
+                  type="com.da62.presenter.splash.SplashViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

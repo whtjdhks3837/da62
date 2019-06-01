@@ -1,7 +1,7 @@
 package com.da62
 
 import android.app.Application
-import com.da62.di.appModules
+import com.da62.datasource.di.appModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 

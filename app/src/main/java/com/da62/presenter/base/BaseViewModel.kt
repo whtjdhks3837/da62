@@ -1,4 +1,4 @@
-package com.da62.ui.base
+package com.da62.presenter.base
 
 import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable

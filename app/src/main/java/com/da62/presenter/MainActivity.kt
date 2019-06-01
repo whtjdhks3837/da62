@@ -1,8 +1,8 @@
-package com.da62.ui
+package com.da62.presenter
 
 import android.os.Bundle
 import com.da62.R
-import com.da62.ui.base.BaseActivity
+import com.da62.presenter.base.BaseActivity
 
 class MainActivity : BaseActivity() {
 

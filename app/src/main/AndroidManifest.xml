@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".ui.splash.SplashActivity">
+        <activity android:name="com.da62.presenter.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,9 +23,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.MainActivity" />
+        <activity android:name=".presenter.MainActivity" />
 
-        <activity android:name=".ui.login.LoginActivity" />
+        <activity android:name="com.da62.presenter.login.LoginActivity" />
 
     </application>
 
