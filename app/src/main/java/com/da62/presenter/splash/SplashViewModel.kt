@@ -1,7 +1,7 @@
-package com.da62.ui.splash
+package com.da62.presenter.splash
 
 import androidx.lifecycle.LiveData
-import com.da62.ui.base.BaseViewModel
+import com.da62.presenter.base.BaseViewModel
 import com.da62.util.SingleLiveEvent
 import com.da62.util.add
 import io.reactivex.Completable

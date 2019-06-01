@@ -1,10 +1,10 @@
-package com.da62.ui.login
+package com.da62.presenter.login
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.da62.R
 import com.da62.databinding.ActivityLoginBinding
-import com.da62.ui.base.BaseActivity
+import com.da62.presenter.base.BaseActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginActivity : BaseActivity() {
