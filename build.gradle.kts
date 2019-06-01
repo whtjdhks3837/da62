@@ -8,7 +8,6 @@ buildscript {
     dependencies {
         classpath (BuildPlugins.buildGradle)
         classpath (BuildPlugins.kotlinGradlePlugin)
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.1.0-alpha04")
     }
 }
 

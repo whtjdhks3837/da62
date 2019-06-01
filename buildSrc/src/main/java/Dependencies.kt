@@ -40,7 +40,6 @@ object Libraries {
         const val ktx = "1.0.1"
         const val lifecycle = "2.0.0"
         const val material = "1.0.0"
-        const val navigationComponent = "2.1.0-alpha04"
         const val retrofit = "2.5.0"
         const val rxAndroid = "2.1.1"
         const val rxJava = "2.2.8"
@@ -68,9 +67,6 @@ object Libraries {
 
     const val rxAndroid = "io.reactivex.rxjava2:rxandroid:${Versions.rxAndroid}"
     const val rxJava = "io.reactivex.rxjava2:rxjava:${Versions.rxJava}"
-
-    const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigationComponent}"
-    const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigationComponent}"
 }
 
 object TestLibraries {

@@ -3,7 +3,6 @@ plugins {
     kotlin(BuildPlugins.android)
     kotlin(BuildPlugins.androidExtension)
     kotlin(BuildPlugins.kapt)
-    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -68,10 +67,6 @@ dependencies {
     implementation(Libraries.retrofitRxJava)
 
     implementation(Libraries.anko)
-
-    implementation(Libraries.navigationFragment)
-    implementation(Libraries.navigationUi)
-
 
     testImplementation(TestLibraries.junit)
     androidTestImplementation(TestLibraries.rules)
