@@ -15,7 +15,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+        maven(Url.Maven.kakao)
     }
 }
 

@@ -36,6 +36,7 @@ object Libraries {
         const val constraintLayout = "2.0.0-beta1"
         const val glide = "4.8.0"
         const val glideTransform = "4.0.0"
+        const val kakao = "1.16.0"
         const val koin = "2.0.0"
         const val ktx = "1.0.1"
         const val lifecycle = "2.0.0"
@@ -44,6 +45,10 @@ object Libraries {
         const val rxAndroid = "2.1.1"
         const val rxJava = "2.2.8"
     }
+
+    const val kakaoGroup = "com.kakao.sdk"
+    const val kakaoName = "usermgmt"
+    const val kakaoVersion = Versions.kakao
 
     const val anko = "org.jetbrains.anko:anko:${Versions.anko}"
 

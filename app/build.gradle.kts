@@ -73,4 +73,7 @@ dependencies {
     androidTestImplementation(TestLibraries.espressoCore)
 
     implementation(DebugLibraries.okhttpLogger)
+
+    // Kakao
+    implementation(group = Libraries.kakaoGroup, name = Libraries.kakaoName, version = Libraries.kakaoVersion)
 }
