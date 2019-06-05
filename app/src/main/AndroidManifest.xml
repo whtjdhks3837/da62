@@ -33,6 +33,8 @@
 
         <activity android:name=".presenter.write.WriteActivity" />
 
+        <activity android:name=".presenter.detail.DetailActivity"/>
+
     </application>
 
 </manifest>
