@@ -31,6 +31,8 @@
 
         <activity android:name="com.da62.presenter.login.LoginActivity" />
 
+        <activity android:name=".presenter.write.WriteActivity" />
+
     </application>
 
 </manifest>
