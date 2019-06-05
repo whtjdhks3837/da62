@@ -8,4 +8,6 @@ val useCaseModules = module {
     factory { WriteUseCaseImpl(get()) as WriteUseCase }
 
     factory { DetailUseCaseImpl(get()) as DetailUseCase }
+
+    factory { MainUseCaseImpl(get()) as MainUseCase }
 }

@@ -8,4 +8,6 @@ val repositoryModules = module {
     factory { WriteRepositoryImpl() as WriteRepository }
 
     factory { DetailRepositoryImpl() as DetailRepository }
+
+    factory { MainRepositoryImpl() as MainRepository }
 }
