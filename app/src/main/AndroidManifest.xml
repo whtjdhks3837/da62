@@ -31,6 +31,10 @@
 
         <activity android:name="com.da62.presenter.login.LoginActivity" />
 
+        <activity android:name=".presenter.write.WriteActivity" />
+
+        <activity android:name=".presenter.detail.DetailActivity"/>
+
     </application>
 
 </manifest>
