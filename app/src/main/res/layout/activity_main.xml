@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.da62.presenter.MainViewModel" />
+            type="com.da62.presenter.main.MainViewModel" />
     </data>
 
 

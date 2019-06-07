@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".presenter.MainActivity" />
+        <activity android:name=".presenter.main.MainActivity" />
 
         <activity android:name="com.da62.presenter.login.LoginActivity" />
 

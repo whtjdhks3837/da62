@@ -1,4 +1,4 @@
-package com.da62.presenter
+package com.da62.presenter.main
 
 import android.os.Bundle
 import com.da62.R
