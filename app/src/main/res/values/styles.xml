@@ -9,4 +9,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="HorizontalProgressBar" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:progressBackgroundTint">#d8d8d8</item>
+    </style>
+
+    <style name="WaterProgressBar" parent="HorizontalProgressBar">
+
+        <item name="android:progressTint">#abd9ff</item>
+
+    </style>
+
 </resources>

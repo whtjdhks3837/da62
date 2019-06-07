@@ -6,7 +6,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.da62.databinding.ItemMainBinding
+import com.da62.databinding.ItemMainListBinding
 import com.da62.model.Plant
 
 class MainAdapter(
@@ -14,7 +14,7 @@ class MainAdapter(
     private val lifecycleOwner: LifecycleOwner
 ) : ListAdapter<Plant, MainViewHolder>(mainDiffUtil) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
-        val binding = ItemMainBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemMainListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MainViewHolder(binding, eventListener, lifecycleOwner)
     }
 
@@ -25,7 +25,7 @@ class MainAdapter(
 }
 
 class MainViewHolder(
-    private val binding: ItemMainBinding,
+    private val binding: ItemMainListBinding,
     private val eventListener: MainEventListener,
     private val lifecycleOwner: LifecycleOwner
 ) : RecyclerView.ViewHolder(binding.root) {
