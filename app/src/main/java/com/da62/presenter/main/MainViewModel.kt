@@ -39,6 +39,8 @@ class MainViewModel(
     init {
         _plantList.value = useCase.getPlantList()
 
+        _isAddVisible.value = true
+
         _isAddVisible.addSource(_clickToViewType) {
             _isAddVisible.value = it == ListType.LIST
         }
