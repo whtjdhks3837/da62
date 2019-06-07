@@ -14,11 +14,21 @@ class MainViewModel(
     val plantList: LiveData<List<Plant>>
         get() = _plantList
 
+    // plant id
+    private val _clickToItem = MutableLiveData<Int>()
+    val clickToItem: LiveData<Int>
+        get() = _clickToItem
+
     init {
         _plantList.value = useCase.getPlantList()
+    }
+
+    override fun onItemClick(position: Int, plant: Plant) {
+        _clickToItem.value = plant.id
     }
 }
 
 interface MainEventListener {
 
+    fun onItemClick(position: Int, plant: Plant)
 }
