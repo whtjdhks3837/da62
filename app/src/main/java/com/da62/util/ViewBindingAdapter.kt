@@ -1,5 +1,8 @@
 package com.da62.util
 
+import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,5 +28,18 @@ fun setListType(recyclerView: RecyclerView, type: ListType?) {
             layoutManager = manager
             (adapter as MainAdapter).setViewType(it)
         }
+    }
+}
+
+@BindingAdapter("goneUnless")
+fun goneUnless(view: View, visible: Boolean?) {
+    visible?.let {
+        if (it) {
+            view.visibility = VISIBLE
+        } else {
+            view.visibility = GONE
+        }
+    } ?: run {
+        view.visibility = GONE
     }
 }

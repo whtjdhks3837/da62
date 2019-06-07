@@ -1,11 +1,13 @@
 package com.da62.presenter.main
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import com.da62.model.ListType
 import com.da62.model.Plant
 import com.da62.presenter.base.BaseViewModel
 import com.da62.usecase.MainUseCase
+import com.da62.util.SingleLiveEvent
 
 class MainViewModel(
     private val useCase: MainUseCase
@@ -26,8 +28,20 @@ class MainViewModel(
     val clickToViewType: LiveData<ListType>
         get() = _clickToViewType
 
+    private val _isAddVisible = MediatorLiveData<Boolean>()
+    val isAddVisible: LiveData<Boolean>
+        get() = _isAddVisible
+
+    private val _clickToAdd = SingleLiveEvent<Any>()
+    val clickToAdd: LiveData<Any>
+        get() = _clickToAdd
+
     init {
         _plantList.value = useCase.getPlantList()
+
+        _isAddVisible.addSource(_clickToViewType) {
+            _isAddVisible.value = it == ListType.LIST
+        }
     }
 
     override fun onItemClick(position: Int, plant: Plant) {
@@ -44,6 +58,10 @@ class MainViewModel(
             else -> ListType.LIST
         }
         return viewType
+    }
+
+    fun clickToAdd() {
+        _clickToAdd.call()
     }
 }
 
