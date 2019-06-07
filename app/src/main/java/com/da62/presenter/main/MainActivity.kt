@@ -28,7 +28,6 @@ class MainActivity : BaseActivity() {
 
         binding.mainRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
-            setHasFixedSize(true)
             adapter = MainAdapter(viewModel, this@MainActivity)
         }
 
