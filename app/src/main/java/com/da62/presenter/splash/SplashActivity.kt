@@ -5,7 +5,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.da62.R
 import com.da62.databinding.ActivitySplashBinding
-import com.da62.presenter.MainActivity
+import com.da62.presenter.main.MainActivity
 import com.da62.presenter.base.BaseActivity
 import org.jetbrains.anko.intentFor
 import org.koin.androidx.viewmodel.ext.android.viewModel

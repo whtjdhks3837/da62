@@ -2,6 +2,7 @@ package com.da62.presenter
 
 import com.da62.presenter.detail.DetailViewModel
 import com.da62.presenter.login.LoginViewModel
+import com.da62.presenter.main.MainViewModel
 import com.da62.presenter.splash.SplashViewModel
 import com.da62.presenter.write.WriteViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
