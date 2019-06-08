@@ -9,6 +9,7 @@ import com.da62.R
 import com.da62.databinding.ActivityMainBinding
 import com.da62.presenter.base.BaseActivity
 import com.da62.presenter.detail.DetailActivity
+import com.da62.presenter.write.WriteActivity
 import org.jetbrains.anko.intentFor
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -28,7 +29,6 @@ class MainActivity : BaseActivity() {
 
         binding.mainRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
-            setHasFixedSize(true)
             adapter = MainAdapter(viewModel, this@MainActivity)
         }
 
@@ -36,6 +36,10 @@ class MainActivity : BaseActivity() {
 
         viewModel.clickToItem.observe(this, Observer {
             startActivity(intentFor<DetailActivity>())
+        })
+
+        viewModel.clickToAdd.observe(this, Observer {
+            startActivity(intentFor<WriteActivity>())
         })
     }
 }

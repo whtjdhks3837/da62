@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="plant"
+            type="com.da62.model.Plant" />
+
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="eventListener"
+            type="com.da62.presenter.main.MainEventListener" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="#f4f4f4"
+        android:onClick="@{() -> eventListener.onItemClick(position, plant)}">
+
+        <ImageView
+            android:id="@+id/item_main_image"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_main_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@{plant.name}"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_main_image"
+            tools:text="다6이" />
+
+        <TextView
+            android:id="@+id/item_main_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{plant.description}"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_main_title" />
+
+        <ProgressBar
+            android:id="@+id/item_main_water_progress"
+            style="@style/WaterProgressBar"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_main_description"
+            app:layout_constraintWidth_percent=".7"
+            tools:max="10"
+            tools:progress="5" />
+
+        <ProgressBar
+            android:id="@+id/item_main_love_progress"
+            style="@style/WaterProgressBar"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_main_water_progress"
+            app:layout_constraintWidth_percent=".7"
+            tools:max="10"
+            tools:progress="5" />
+
+        <ProgressBar
+            android:id="@+id/item_main_any_progress"
+            style="@style/WaterProgressBar"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_main_love_progress"
+            app:layout_constraintWidth_percent=".7"
+            tools:max="10"
+            tools:progress="5" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="37dp"
+            android:layout_marginBottom="23dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_main_any_progress" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
