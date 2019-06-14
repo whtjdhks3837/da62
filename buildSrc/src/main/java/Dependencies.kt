@@ -42,6 +42,7 @@ object Libraries {
         const val lifecycle = "2.0.0"
         const val material = "1.0.0"
         const val retrofit = "2.5.0"
+        const val retrofitGson = "2.5.0"
         const val rxAndroid = "2.1.1"
         const val rxJava = "2.2.8"
     }
@@ -58,6 +59,7 @@ object Libraries {
 
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofitRxJava = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
+    const val retrofitGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofitGson}"
 
     const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"

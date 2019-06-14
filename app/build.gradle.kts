@@ -65,6 +65,7 @@ dependencies {
     // Retrofit with Moshi
     implementation(Libraries.retrofit)
     implementation(Libraries.retrofitRxJava)
+    implementation(Libraries.retrofitGson)
 
     implementation(Libraries.anko)
 
