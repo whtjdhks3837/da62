@@ -6,7 +6,7 @@ import org.jetbrains.anko.AnkoLogger
 
 open class BaseViewModel : ViewModel(), AnkoLogger {
 
-    val compositeDisposable = CompositeDisposable()
+    protected val compositeDisposable = CompositeDisposable()
 
     override fun onCleared() {
         super.onCleared()
