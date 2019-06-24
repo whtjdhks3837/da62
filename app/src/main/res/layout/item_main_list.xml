@@ -21,93 +21,159 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:background="#f4f4f4"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_item_main"
+        android:elevation="4dp"
         android:onClick="@{() -> eventListener.onItemClick(position, plant)}">
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/item_main_top_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".092" />
+
+        <View
+            android:id="@+id/item_main_divider"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_main_top_view"
+            app:layout_constraintWidth_percent=".0857" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/item_main_divider"
+            app:layout_constraintStart_toEndOf="@id/item_main_divider"
+            app:layout_constraintTop_toTopOf="@id/item_main_divider"
+            tools:text="산세베리아" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_top_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".184" />
 
         <ImageView
             android:id="@+id/item_main_image"
-            android:layout_width="100dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="40dp"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="@dimen/match_constraint"
+            android:scaleType="fitXY"
+            app:layout_constraintDimensionRatio="w, 1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/guide_top_image"
+            app:layout_constraintWidth_percent=".394" />
+
+        <ImageButton
+            android:id="@+id/item_main_water"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/bg_water_blue"
+            android:src="@drawable/icon_water"
+            app:layout_constraintBottom_toTopOf="@id/item_main_heart"
+            app:layout_constraintStart_toEndOf="@id/item_main_image"
+            app:layout_constraintTop_toTopOf="@id/item_main_image"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <ImageButton
+            android:id="@+id/item_main_heart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_heart_pink"
+            android:src="@drawable/icon_heart"
+            app:layout_constraintBottom_toBottomOf="@id/item_main_image"
+            app:layout_constraintEnd_toEndOf="@id/item_main_water"
+            app:layout_constraintStart_toStartOf="@id/item_main_water"
+            app:layout_constraintTop_toBottomOf="@id/item_main_water" />
+
+        <ImageView
+            android:id="@+id/item_main_title_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_growth_black"
+            app:layout_constraintEnd_toStartOf="@id/item_main_title"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="@id/item_main_image"
+            app:layout_constraintTop_toBottomOf="@id/item_main_image" />
 
         <TextView
             android:id="@+id/item_main_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginStart="10dp"
             android:text="@{plant.name}"
             android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_main_image"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="@id/item_main_title_image"
+            app:layout_constraintEnd_toEndOf="@id/item_main_image"
+            app:layout_constraintStart_toEndOf="@id/item_main_title_image"
+            app:layout_constraintTop_toTopOf="@id/item_main_title_image"
             tools:text="다6이" />
 
         <TextView
-            android:id="@+id/item_main_description"
+            android:id="@+id/item_main_water_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{plant.description}"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="60dp"
+            android:text="물주기"
             android:textColor="@color/black"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_main_title" />
+            app:layout_constraintTop_toBottomOf="@id/item_main_title_image" />
 
         <ProgressBar
             android:id="@+id/item_main_water_progress"
             style="@style/WaterProgressBar"
             android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintBottom_toBottomOf="@id/item_main_water_text"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_main_description"
-            app:layout_constraintWidth_percent=".7"
+            app:layout_constraintStart_toEndOf="@id/item_main_water_text"
+            app:layout_constraintTop_toTopOf="@id/item_main_water_text"
             tools:max="10"
             tools:progress="5" />
+
+        <TextView
+            android:id="@+id/item_main_love_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:text="애정"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_main_water_text" />
+
 
         <ProgressBar
             android:id="@+id/item_main_love_progress"
             style="@style/WaterProgressBar"
             android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintBottom_toBottomOf="@id/item_main_love_text"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_main_water_progress"
-            app:layout_constraintWidth_percent=".7"
+            app:layout_constraintStart_toEndOf="@id/item_main_love_text"
+            app:layout_constraintTop_toTopOf="@id/item_main_love_text"
             tools:max="10"
             tools:progress="5" />
 
-        <ProgressBar
-            android:id="@+id/item_main_any_progress"
-            style="@style/WaterProgressBar"
-            android:layout_width="@dimen/match_constraint"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_main_love_progress"
-            app:layout_constraintWidth_percent=".7"
-            tools:max="10"
-            tools:progress="5" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="37dp"
-            android:layout_marginBottom="23dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_main_any_progress" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
