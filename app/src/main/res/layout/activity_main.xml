@@ -12,7 +12,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#fff3f3">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guide_start"
@@ -39,7 +40,6 @@
             app:layout_constraintStart_toEndOf="@id/guide_start"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <ImageButton
             android:id="@+id/main_btn_view_type"
             android:layout_width="24dp"
@@ -62,30 +62,43 @@
             app:layout_constraintEnd_toStartOf="@id/guide_end"
             app:layout_constraintTop_toTopOf="@id/main_tv_title" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_top_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".12" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/main_recycler_view"
             android:layout_width="@dimen/match_constraint"
-            android:layout_height="@dimen/match_constraint"
-            android:layout_marginTop="34dp"
+            android:layout_height="wrap_content"
             android:scrollbars="none"
             app:layout_constraintBottom_toTopOf="@id/main_btn_floating"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/main_tv_title"
+            app:layout_constraintTop_toBottomOf="@id/guide_top_list"
             app:mainItems="@{viewModel.plantList}"
-            app:mainListType="@{viewModel.clickToViewType}" />
+            app:mainListType="@{viewModel.clickToViewType}"
+            tools:itemCount="1"
+            tools:listitem="@layout/item_main_list" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_bottom_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".9" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/main_btn_floating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
             android:backgroundTint="#1a6d5e"
             android:onClick="@{() -> viewModel.clickToAdd()}"
             app:goneUnless="@{viewModel.isAddVisible}"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/guide_bottom_add"
             app:layout_constraintEnd_toStartOf="@id/guide_end"
             app:layout_constraintTop_toBottomOf="@id/main_recycler_view"
             app:srcCompat="@drawable/ic_add_white_24dp" />
