@@ -1,6 +1,5 @@
 package com.da62.presenter.write.plant
 
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.LiveData
 import com.da62.presenter.base.BaseViewModel
@@ -8,11 +7,11 @@ import com.da62.util.SingleLiveEvent
 
 class PlantRegistViewModel : BaseViewModel() {
 
-    private val _mNext = SingleLiveEvent<Any>()
+    private val _next = SingleLiveEvent<Any>()
 
-    val mNext: LiveData<Any> = _mNext
+    val next: LiveData<Any> = _next
 
     fun onNextClick(view: View) {
-        _mNext.call()
+        _next.call()
     }
 }

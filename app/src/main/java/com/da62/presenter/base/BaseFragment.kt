@@ -10,15 +10,15 @@ import org.jetbrains.anko.AnkoLogger
 
 abstract class BaseFragment<T : ViewDataBinding> : Fragment(), AnkoLogger {
 
-    lateinit var mBinding: T
+    lateinit var binding: T
 
-    abstract val mResourceId: Int
+    abstract val resourceId: Int
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
         DataBindingUtil.inflate<T>(
-            LayoutInflater.from(context), mResourceId, container, false
+            LayoutInflater.from(context), resourceId, container, false
         ).apply {
-            mBinding = this
-            mBinding.lifecycleOwner = this@BaseFragment
+            binding = this
+            binding.lifecycleOwner = this@BaseFragment
         }.root
 }

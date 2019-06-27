@@ -8,8 +8,8 @@ interface LoginUseCase {
     fun login(accessToken: String): Single<Int>
 }
 
-class LoginUseCaseImpl(private val mRepository: LoginRepository) : LoginUseCase {
+class LoginUseCaseImpl(private val repository: LoginRepository) : LoginUseCase {
 
     override fun login(accessToken: String) =
-        mRepository.postKakaoProfile(accessToken)
+        repository.postKakaoProfile(accessToken)
 }

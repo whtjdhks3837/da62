@@ -12,9 +12,9 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class PlantWaterSettingFragment : BaseFragment<FragmentPlantRegistWaterSettingBinding>() {
 
-    private val mViewModel by sharedViewModel<PlantRegistViewModel>()
+    private val viewModel by sharedViewModel<PlantRegistViewModel>()
 
-    override val mResourceId = R.layout.fragment_plant_regist_water_setting
+    override val resourceId = R.layout.fragment_plant_regist_water_setting
 
     companion object {
         fun createInstance() =
@@ -25,7 +25,7 @@ class PlantWaterSettingFragment : BaseFragment<FragmentPlantRegistWaterSettingBi
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
         super.onCreateView(inflater, container, savedInstanceState).apply {
-            mBinding.viewModel = mViewModel
+            binding.viewModel = viewModel
         }
 
 }

@@ -7,24 +7,22 @@ import androidx.lifecycle.Observer
 import com.da62.R
 import com.da62.databinding.ActivityLoginBinding
 import com.da62.presenter.base.BaseActivity
-import com.kakao.auth.ISessionCallback
 import com.kakao.auth.Session
-import com.kakao.util.exception.KakaoException
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginActivity : BaseActivity() {
 
-    private val mViewModel by viewModel<LoginViewModel>()
+    private val viewModel by viewModel<LoginViewModel>()
 
-    private lateinit var mBinding: ActivityLoginBinding
+    private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
-        mBinding.viewModel = mViewModel
-        mBinding.lifecycleOwner = this
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
 
-        mViewModel.mLogin.observe(this, Observer {
+        viewModel.login.observe(this, Observer {
 
         })
     }

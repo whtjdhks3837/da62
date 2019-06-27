@@ -1,18 +1,12 @@
 package com.da62.presenter.write.plant
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.Observer
 import androidx.viewpager.widget.PagerAdapter
-import androidx.viewpager.widget.ViewPager
 import com.da62.R
 import com.da62.databinding.ActivityPlantRegistBinding
 import com.da62.presenter.base.BaseActivity
@@ -23,15 +17,15 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PlantRegistActivity : BaseActivity() {
 
-    private val mViewModel by viewModel<PlantRegistViewModel>()
+    private val viewModel by viewModel<PlantRegistViewModel>()
 
-    private lateinit var mBinding: ActivityPlantRegistBinding
+    private lateinit var binding: ActivityPlantRegistBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_plant_regist)
-        mBinding.viewModel = mViewModel
-        mBinding.lifecycleOwner = this
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_plant_regist)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
 
         init()
         nextObserve()
@@ -49,7 +43,7 @@ class PlantRegistActivity : BaseActivity() {
         )
     }
 
-    private fun initViewPager(pagerAdapter: PagerAdapter) = mBinding.viewPager.apply {
+    private fun initViewPager(pagerAdapter: PagerAdapter) = binding.viewPager.apply {
         adapter = pagerAdapter
         currentItem = 0
         beginFakeDrag()
@@ -61,8 +55,8 @@ class PlantRegistActivity : BaseActivity() {
                 setPage(pages)
             }
 
-    private fun nextObserve() = mViewModel.mNext.observe(this, Observer {
-        mBinding.viewPager.apply {
+    private fun nextObserve() = viewModel.next.observe(this, Observer {
+        binding.viewPager.apply {
             if (currentItem == childCount) {
                 //Do Something...
             } else {
@@ -75,13 +69,13 @@ class PlantRegistActivity : BaseActivity() {
 class PlantRegistViewPagerAdapter(private val mFragmentManager: FragmentManager) :
     FragmentPagerAdapter(mFragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
-    private val mPages = mutableListOf<Fragment>()
+    private val pages = mutableListOf<Fragment>()
 
-    override fun getItem(position: Int) = mPages[position]
+    override fun getItem(position: Int) = pages[position]
 
-    override fun getCount() = mPages.size
+    override fun getCount() = pages.size
 
     fun setPage(pages: List<Fragment>) {
-        mPages.addAll(pages)
+        this.pages.addAll(pages)
     }
 }
