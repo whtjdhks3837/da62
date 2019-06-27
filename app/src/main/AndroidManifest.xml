@@ -35,6 +35,7 @@
 
         <activity android:name=".presenter.detail.DetailActivity"/>
 
+        <activity android:name=".presenter.write.plant.PlantRegistActivity"/>
     </application>
 
 </manifest>

@@ -14,11 +14,11 @@ interface LoginRepository {
 }
 
 class LoginRepositoryImpl(
-    private val mApiService: ApiService,
-    private val mKakaoApiService: KakaoApiService) : LoginRepository {
+    private val apiService: ApiService,
+    private val kakaoApiService: KakaoApiService) : LoginRepository {
 
     override fun postKakaoProfile(accessToken: String): Single<Int> =
-        mKakaoApiService.postKakaoProfile("Bearer $accessToken")
+        kakaoApiService.postKakaoProfile("Bearer $accessToken")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .map {
@@ -26,7 +26,7 @@ class LoginRepositoryImpl(
             }
 
     override fun postKakaoId(id: Int): Single<Any> =
-        mApiService.postKakaoId()
+        apiService.postKakaoId()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 }

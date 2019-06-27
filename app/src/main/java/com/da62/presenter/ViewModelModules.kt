@@ -5,6 +5,7 @@ import com.da62.presenter.login.LoginViewModel
 import com.da62.presenter.main.MainViewModel
 import com.da62.presenter.splash.SplashViewModel
 import com.da62.presenter.write.WriteViewModel
+import com.da62.presenter.write.plant.PlantRegistViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -14,4 +15,5 @@ val viewModelModules = module {
     viewModel { MainViewModel(get()) }
     viewModel { WriteViewModel(get()) }
     viewModel { DetailViewModel(get()) }
+    viewModel { PlantRegistViewModel() }
 }

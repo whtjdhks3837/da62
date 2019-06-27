@@ -1,9 +1,6 @@
 package com.da62.presenter.login
 
-import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.da62.datasource.api.ApiService
 import com.da62.presenter.base.BaseViewModel
 import com.da62.usecase.LoginUseCase
 import com.da62.util.SingleLiveEvent
@@ -11,22 +8,21 @@ import com.da62.util.add
 import com.kakao.auth.ISessionCallback
 import com.kakao.auth.Session
 import com.kakao.util.exception.KakaoException
-import io.reactivex.Single
 
-class LoginViewModel(private val mUseCase: LoginUseCase) : BaseViewModel() {
+class LoginViewModel(private val useCase: LoginUseCase) : BaseViewModel() {
 
-    private val _mError = SingleLiveEvent<String>()
+    private val _error = SingleLiveEvent<String>()
 
-    private val _mLogin = SingleLiveEvent<Any>()
+    private val _login = SingleLiveEvent<Any>()
 
-    val mError: LiveData<String> = _mError
+    val error: LiveData<String> = _error
 
-    val mLogin: LiveData<Any> = _mLogin
+    val login: LiveData<Any> = _login
 
-    private val mKakaoCallback = object : ISessionCallback {
+    private val kakaoCallback = object : ISessionCallback {
 
         override fun onSessionOpenFailed(exception: KakaoException?) {
-            _mError.value = "로그인에 실패했습니다. 다시 시도해주세요."
+            _error.value = "로그인에 실패했습니다. 다시 시도해주세요."
         }
 
         override fun onSessionOpened() {
@@ -37,13 +33,13 @@ class LoginViewModel(private val mUseCase: LoginUseCase) : BaseViewModel() {
     }
 
     init {
-        Session.getCurrentSession().addCallback(mKakaoCallback)
+        Session.getCurrentSession().addCallback(kakaoCallback)
         Session.getCurrentSession().checkAndImplicitOpen()
     }
 
     private fun login(accessToken: String) {
         compositeDisposable add
-                mUseCase.login(accessToken)
+                useCase.login(accessToken)
                     .subscribe({
                         it
                     }, {
@@ -53,6 +49,6 @@ class LoginViewModel(private val mUseCase: LoginUseCase) : BaseViewModel() {
 
     override fun onCleared() {
         super.onCleared()
-        Session.getCurrentSession().removeCallback(mKakaoCallback)
+        Session.getCurrentSession().removeCallback(kakaoCallback)
     }
 }
