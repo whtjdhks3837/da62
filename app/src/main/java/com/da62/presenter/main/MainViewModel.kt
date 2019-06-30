@@ -11,18 +11,13 @@ import com.da62.util.SingleLiveEvent
 
 class MainViewModel(
     private val useCase: MainUseCase
-) : BaseViewModel(), MainEventListener {
+) : BaseViewModel() {
 
     private var viewType = ListType.LIST
 
     private val _plantList = MutableLiveData<List<Plant>>()
     val plantList: LiveData<List<Plant>>
         get() = _plantList
-
-    // plant id
-    private val _clickToItem = MutableLiveData<Int>()
-    val clickToItem: LiveData<Int>
-        get() = _clickToItem
 
     private val _clickToViewType = MutableLiveData<ListType>()
     val clickToViewType: LiveData<ListType>
@@ -46,10 +41,6 @@ class MainViewModel(
         }
     }
 
-    override fun onItemClick(position: Int, plant: Plant) {
-        _clickToItem.value = plant.id
-    }
-
     fun clickToViewType() {
         _clickToViewType.value = changeViewType()
     }
@@ -65,9 +56,4 @@ class MainViewModel(
     fun clickToAdd() {
         _clickToAdd.call()
     }
-}
-
-interface MainEventListener {
-
-    fun onItemClick(position: Int, plant: Plant)
 }
