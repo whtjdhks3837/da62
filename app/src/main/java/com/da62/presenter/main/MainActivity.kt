@@ -10,6 +10,7 @@ import com.da62.databinding.ActivityMainBinding
 import com.da62.presenter.base.BaseActivity
 import com.da62.presenter.detail.DetailActivity
 import com.da62.presenter.write.WriteActivity
+import com.da62.util.dp2px
 import org.jetbrains.anko.intentFor
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -30,6 +31,7 @@ class MainActivity : BaseActivity() {
         binding.mainRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
             adapter = MainAdapter(viewModel, this@MainActivity)
+            addItemDecoration(MainItemDecoration(dp2px(this@MainActivity, 24f), dp2px(this@MainActivity, 16f)))
         }
 
         snapHelper.attachToRecyclerView(binding.mainRecyclerView)

@@ -14,9 +14,7 @@
     </style>
 
     <style name="WaterProgressBar" parent="HorizontalProgressBar">
-
-        <item name="android:progressTint">#abd9ff</item>
-
+        <item name="android:progressDrawable">@drawable/bg_main_progressbar</item>
     </style>
 
 </resources>
