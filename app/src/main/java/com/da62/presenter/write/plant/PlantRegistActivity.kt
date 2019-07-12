@@ -1,12 +1,16 @@
 package com.da62.presenter.write.plant
 
+import android.content.Context
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.Observer
 import androidx.viewpager.widget.PagerAdapter
+import androidx.viewpager.widget.ViewPager
 import com.da62.R
 import com.da62.databinding.ActivityPlantRegistBinding
 import com.da62.presenter.base.BaseActivity
@@ -29,6 +33,7 @@ class PlantRegistActivity : BaseActivity() {
 
         init()
         nextObserve()
+        errorObserve()
     }
 
     private fun init() {
@@ -57,13 +62,31 @@ class PlantRegistActivity : BaseActivity() {
 
     private fun nextObserve() = viewModel.next.observe(this, Observer {
         binding.viewPager.apply {
-            if (currentItem == childCount) {
+            if (isLastPage()) {
                 //Do Something...
             } else {
                 currentItem += 1
             }
         }
     })
+
+    private fun isLastPage() = binding.viewPager.let {
+        it.currentItem == it.childCount
+    }
+
+    private fun errorObserve() = viewModel.error.observe(this, Observer {
+        Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+    })
+
+    override fun onBackPressed() {
+        binding.viewPager.apply {
+            if (currentItem != 0) {
+                currentItem--
+            } else {
+                super.onBackPressed()
+            }
+        }
+    }
 }
 
 class PlantRegistViewPagerAdapter(private val mFragmentManager: FragmentManager) :

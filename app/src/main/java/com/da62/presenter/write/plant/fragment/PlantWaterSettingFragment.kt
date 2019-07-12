@@ -4,10 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CalendarView
 import com.da62.R
 import com.da62.databinding.FragmentPlantRegistWaterSettingBinding
 import com.da62.presenter.base.BaseFragment
 import com.da62.presenter.write.plant.PlantRegistViewModel
+import com.da62.presenter.write.plant.dialog.PlantWaterCalendarDialog
+import com.da62.presenter.write.plant.dialog.PlantWaterTimePickerDialog
+import org.jetbrains.anko.sdk27.coroutines.onCheckedChange
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class PlantWaterSettingFragment : BaseFragment<FragmentPlantRegistWaterSettingBinding>() {
@@ -28,4 +32,31 @@ class PlantWaterSettingFragment : BaseFragment<FragmentPlantRegistWaterSettingBi
             binding.viewModel = viewModel
         }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.date.setOnClickListener {
+            activity?.let {
+                PlantWaterCalendarDialog { date ->
+                    viewModel.waterDate.value = date
+                }.show(it.supportFragmentManager, null)
+            }
+        }
+        binding.waterTime.setOnClickListener {
+            activity?.let {
+                PlantWaterTimePickerDialog { time ->
+                    var hour = time.first
+                    val min = time.second
+                    if (hour > 12) {
+                        hour -= 12
+                        viewModel.waterTime.value = "$hour : $min"
+                    } else {
+                        viewModel.waterTime.value = "$hour : $min"
+                    }
+                }.show(it.supportFragmentManager, null)
+            }
+        }
+        binding.alarmSwitch.onCheckedChange { _, isChecked ->
+            viewModel.isWaterAlarmChecked.value = isChecked
+        }
+    }
 }

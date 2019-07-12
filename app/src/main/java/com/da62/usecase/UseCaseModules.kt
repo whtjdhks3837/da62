@@ -5,7 +5,7 @@ import org.koin.dsl.module
 val useCaseModules = module {
     factory { LoginUseCaseImpl(get()) as LoginUseCase }
 
-    factory { WriteUseCaseImpl(get()) as WriteUseCase }
+    factory { PlantRegistUseCaseImpl(get()) as PlantRegistUseCase }
 
     factory { DetailUseCaseImpl(get()) as DetailUseCase }
 

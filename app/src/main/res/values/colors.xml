@@ -7,4 +7,6 @@
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
 
+    <color name="colorMain">#1a6d5e</color>
+    <color name="colorNearCaribbean">#10c780</color>
 </resources>
