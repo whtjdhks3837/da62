@@ -16,7 +16,7 @@ class SplashViewModel : BaseViewModel() {
         get() = _openToMain
 
     init {
-        compositeDisposable add Completable.timer(3, TimeUnit.SECONDS)
+        compositeDisposable add Completable.timer(4500, TimeUnit.MILLISECONDS)
             .subscribeOn(Schedulers.computation())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ _openToMain.call() }, {})
