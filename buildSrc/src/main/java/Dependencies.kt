@@ -45,6 +45,7 @@ object Libraries {
         const val retrofitGson = "2.5.0"
         const val rxAndroid = "2.1.1"
         const val rxJava = "2.2.8"
+        const val lottie = "3.0.7"
     }
 
     const val kakaoGroup = "com.kakao.sdk"
@@ -74,6 +75,8 @@ object Libraries {
 
     const val rxAndroid = "io.reactivex.rxjava2:rxandroid:${Versions.rxAndroid}"
     const val rxJava = "io.reactivex.rxjava2:rxjava:${Versions.rxJava}"
+
+    const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
 }
 
 object TestLibraries {
