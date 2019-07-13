@@ -7,10 +7,12 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import com.da62.R
 import com.da62.databinding.ActivityMainBinding
+import com.da62.model.ListType
 import com.da62.model.Plant
 import com.da62.presenter.base.BaseActivity
 import com.da62.presenter.detail.DetailActivity
@@ -35,12 +37,13 @@ class MainActivity : BaseActivity(), MainEventListener {
 
         binding.mainRecyclerView.apply {
             layoutManager =
-                LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
-            adapter = MainAdapter(this@MainActivity, this@MainActivity)
+                GridLayoutManager(this@MainActivity, 1, LinearLayoutManager.HORIZONTAL, false)
+            adapter = MainAdapter(this@MainActivity, this@MainActivity, ListType.LIST)
             addItemDecoration(
                 MainItemDecoration(
                     dp2px(this@MainActivity, 24f),
-                    dp2px(this@MainActivity, 16f)
+                    dp2px(this@MainActivity, 16f),
+                    ListType.LIST
                 )
             )
         }
@@ -59,6 +62,7 @@ class MainActivity : BaseActivity(), MainEventListener {
         startActivity(intentFor<DetailActivity>(), optionsCompat.toBundle())
     }
 }
+
 interface MainEventListener {
 
     fun onItemClick(view: View, position: Int, plant: Plant)

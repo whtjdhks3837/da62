@@ -1,5 +1,6 @@
 package com.da62.util
 
+import android.animation.Animator
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -8,9 +9,11 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.airbnb.lottie.LottieAnimationView
 import com.da62.model.ListType
 import com.da62.model.Plant
 import com.da62.presenter.main.MainAdapter
+import com.da62.presenter.splash.SplashEventListener
 
 @BindingAdapter("mainItems")
 fun setAddItems(recyclerView: RecyclerView, items: List<Plant>?) {
@@ -20,14 +23,27 @@ fun setAddItems(recyclerView: RecyclerView, items: List<Plant>?) {
 @BindingAdapter("mainListType")
 fun setListType(recyclerView: RecyclerView, type: ListType?) {
     type?.let {
-        val manager = when (it) {
-            ListType.LIST -> LinearLayoutManager(recyclerView.context, LinearLayoutManager.HORIZONTAL, false)
-            else -> GridLayoutManager(recyclerView.context, 2)
-        }
+        /*   val manager = when (it) {
+               ListType.LIST -> GridLayoutManager(
+                   recyclerView.context,
+                   1,
+                   LinearLayoutManager.HORIZONTAL,
+                   false
+               )
 
+               else -> GridLayoutManager(recyclerView.context, 2)
+           }
+   */
         recyclerView.run {
-            layoutManager = manager
+            // layoutManager = manager
+            val manager = layoutManager as GridLayoutManager
+            if (manager.spanCount == 1) {
+                manager.spanCount = 3
+            } else {
+                manager.spanCount = 1
+            }
             (adapter as MainAdapter).setViewType(it)
+            adapter?.notifyItemRangeChanged(0, adapter?.itemCount ?: 0)
         }
     }
 }
@@ -45,6 +61,29 @@ fun goneUnless(view: View, visible: Boolean?) {
     }
 }
 
+@BindingAdapter("lottieAnimation")
+fun lottieAnimation(lottie: LottieAnimationView, eventListener: SplashEventListener) {
+    lottie.setAnimation("splash.json")
+    lottie.playAnimation()
+    lottie.addAnimatorListener(object : Animator.AnimatorListener {
+        override fun onAnimationRepeat(animation: Animator?) {
+
+        }
+
+        override fun onAnimationEnd(animation: Animator?) {
+            eventListener.finishAnimation()
+        }
+
+        override fun onAnimationCancel(animation: Animator?) {
+
+        }
+
+        override fun onAnimationStart(animation: Animator?) {
+
+        }
+
+    })
+}
 @BindingAdapter("waterDate")
 fun setWaterDate(view: TextView, date: String?) {
     view.text = " 부터"
