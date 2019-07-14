@@ -15,7 +15,7 @@ val apiModules = module {
             .client(get())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("https://kapi.kakao.com")
+            .baseUrl("http://3.13.42.149:8080")
             .build()
             .create()
     }

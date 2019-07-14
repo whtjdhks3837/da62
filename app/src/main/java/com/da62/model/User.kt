@@ -1,0 +1,14 @@
+package com.da62.model
+
+import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
+
+data class User(
+    @SerializedName("message") @Expose val message: String,
+    @SerializedName("data") @Expose val userData: UserData
+)
+
+data class UserData(
+    @SerializedName("token") @Expose val token: String,
+    @SerializedName("userId") @Expose val message: Int
+)

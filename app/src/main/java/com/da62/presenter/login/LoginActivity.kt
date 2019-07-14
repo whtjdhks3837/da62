@@ -7,7 +7,10 @@ import androidx.lifecycle.Observer
 import com.da62.R
 import com.da62.databinding.ActivityLoginBinding
 import com.da62.presenter.base.BaseActivity
+import com.da62.presenter.main.MainActivity
 import com.kakao.auth.Session
+import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginActivity : BaseActivity() {
@@ -23,7 +26,12 @@ class LoginActivity : BaseActivity() {
         binding.lifecycleOwner = this
 
         viewModel.login.observe(this, Observer {
+            startActivity(intentFor<MainActivity>())
+            finish()
+        })
 
+        viewModel.error.observe(this, Observer {
+            toast(it)
         })
     }
 
