@@ -7,4 +7,8 @@ val localDataSourceModules = module {
     factory {
         PlantSpeciesLocalDataSourceImpl() as PlantSpeciesLocalDataSource
     }
+
+    factory {
+        LoginLocalDataSourceImpl() as LoginLocalDataSource
+    }
 }
