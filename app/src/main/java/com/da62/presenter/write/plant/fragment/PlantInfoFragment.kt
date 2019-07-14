@@ -28,4 +28,13 @@ class PlantInfoFragment : BaseFragment<FragmentPlantRegistInfoBinding>() {
             binding.viewModel = viewModel
         }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.plantLevel.value?.let { binding.levelGroup.check(it) }
+
+        binding.levelGroup.setOnCheckedChangeListener { group, checkedId ->
+            viewModel.setPlantLevel(checkedId)
+        }
+    }
 }

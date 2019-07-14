@@ -68,6 +68,7 @@ dependencies {
     implementation(Libraries.retrofitGson)
 
     implementation(Libraries.anko)
+    implementation(Libraries.lottie)
 
     testImplementation(TestLibraries.junit)
     androidTestImplementation(TestLibraries.rules)

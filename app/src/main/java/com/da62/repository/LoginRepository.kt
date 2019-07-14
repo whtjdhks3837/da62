@@ -1,32 +1,28 @@
 package com.da62.repository
 
 import com.da62.datasource.api.ApiService
-import com.da62.datasource.api.KakaoApiService
+import com.da62.datasource.local.LoginLocalDataSource
+import com.da62.model.User
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 interface LoginRepository {
 
-    fun postKakaoProfile(accessToken: String): Single<Int>
+    fun postLogin(kakaoToken: String): Single<User>
 
-    fun postKakaoId(id: Int): Single<Any>
+    fun saveUser(user: User)
 }
 
 class LoginRepositoryImpl(
     private val apiService: ApiService,
-    private val kakaoApiService: KakaoApiService) : LoginRepository {
+    private val localDataSource: LoginLocalDataSource
+) : LoginRepository {
 
-    override fun postKakaoProfile(accessToken: String): Single<Int> =
-        kakaoApiService.postKakaoProfile("Bearer $accessToken")
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .map {
-                it.id
-            }
+    override fun postLogin(kakaoToken: String): Single<User> =
+            apiService.postLogin(kakaoToken)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
 
-    override fun postKakaoId(id: Int): Single<Any> =
-        apiService.postKakaoId()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+    override fun saveUser(user: User) = localDataSource.saveUser(user)
 }

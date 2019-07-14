@@ -1,6 +1,7 @@
 package com.da62.presenter.login
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.da62.presenter.base.BaseViewModel
 import com.da62.usecase.LoginUseCase
 import com.da62.util.SingleLiveEvent
@@ -15,9 +16,13 @@ class LoginViewModel(private val useCase: LoginUseCase) : BaseViewModel() {
 
     private val _login = SingleLiveEvent<Any>()
 
+    private val _progress = MutableLiveData<Boolean>()
+
     val error: LiveData<String> = _error
 
     val login: LiveData<Any> = _login
+
+    val progress: LiveData<Boolean> = _progress
 
     private val kakaoCallback = object : ISessionCallback {
 
@@ -38,13 +43,15 @@ class LoginViewModel(private val useCase: LoginUseCase) : BaseViewModel() {
     }
 
     private fun login(accessToken: String) {
-        compositeDisposable add
-                useCase.login(accessToken)
-                    .subscribe({
-                        it
-                    }, {
-                        it.printStackTrace()
-                    })
+        _progress.value = true
+        compositeDisposable add useCase.login(accessToken)
+            .subscribe({
+                _progress.value = false
+                _login.call()
+            }, {
+                _progress.value = false
+                _error.value = "서버에러입니다. 다시 시도해주세요."
+            })
     }
 
     override fun onCleared() {
