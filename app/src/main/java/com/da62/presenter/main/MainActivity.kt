@@ -2,7 +2,6 @@ package com.da62.presenter.main
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
 import androidx.databinding.DataBindingUtil
@@ -16,7 +15,7 @@ import com.da62.model.ListType
 import com.da62.model.Plant
 import com.da62.presenter.base.BaseActivity
 import com.da62.presenter.detail.DetailActivity
-import com.da62.presenter.write.WriteActivity
+import com.da62.presenter.write.plant.PlantRegistActivity
 import com.da62.util.dp2px
 import org.jetbrains.anko.intentFor
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -51,7 +50,7 @@ class MainActivity : BaseActivity(), MainEventListener {
         snapHelper.attachToRecyclerView(binding.mainRecyclerView)
 
         viewModel.clickToAdd.observe(this, Observer {
-            startActivity(intentFor<WriteActivity>())
+            startActivity(intentFor<PlantRegistActivity>())
         })
     }
 

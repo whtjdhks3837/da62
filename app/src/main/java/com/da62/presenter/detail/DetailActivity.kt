@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearSnapHelper
 import com.da62.R
 import com.da62.databinding.ActivityDetailBinding
 import com.da62.presenter.base.BaseActivity
+import com.da62.util.dp2px
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailActivity : BaseActivity() {

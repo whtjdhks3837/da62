@@ -1,5 +1,8 @@
 package com.da62.presenter.detail
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.da62.model.Plant
 import com.da62.presenter.base.BaseViewModel
 import com.da62.usecase.DetailUseCase
 import com.da62.util.SingleLiveEvent

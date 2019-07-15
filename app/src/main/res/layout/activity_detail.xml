@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -9,7 +10,7 @@
             type="com.da62.presenter.detail.DetailViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -75,7 +76,7 @@
                 android:layout_width="88dp"
                 android:layout_height="107dp"
                 android:layout_marginTop="51dp"
-                android:src="@drawable/ic_plant_1"
+                android:src="@drawable/ic_illust_1"
                 android:transitionName="pair_thumbnail"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -122,7 +123,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="36dp"
-                android:src="@drawable/ic_growth_green"
+                android:src="@drawable/ic_path"
                 app:layout_constraintEnd_toStartOf="@id/detail_name"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
@@ -133,7 +134,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:textColor="@color/green"
+                android:textColor="@color/colorMain"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/detail_name_icon"
@@ -176,7 +177,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
                 android:text="2일후"
-                android:textColor="@color/green"
+                android:textColor="@color/colorMain"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@id/detail_water_progress"
                 app:layout_constraintEnd_toStartOf="@id/guide_end"
@@ -215,7 +216,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
                 android:text="60%"
-                android:textColor="@color/green"
+                android:textColor="@color/colorMain"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@id/detail_heart_progress"
                 app:layout_constraintEnd_toStartOf="@id/guide_end"
@@ -231,8 +232,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/detail_heart_text"
-                tools:itemCount="1"
-                tools:listitem="@layout/item_detail_info" />
+                tools:itemCount="1" />
 
             <TextView
                 android:id="@+id/detail_gallery_text"
@@ -281,5 +281,4 @@
 
     </ScrollView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

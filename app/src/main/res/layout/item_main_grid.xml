@@ -34,7 +34,7 @@
             android:layout_height="92dp"
             android:layout_marginTop="20dp"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_plant_1"
+            android:src="@drawable/ic_illust_1"
             android:transitionName="pair_thumbnail"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
