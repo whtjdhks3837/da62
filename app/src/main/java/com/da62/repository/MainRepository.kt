@@ -1,21 +1,24 @@
 package com.da62.repository
 
+import com.da62.datasource.api.ApiService
+import com.da62.datasource.local.PreferenceStorage
 import com.da62.model.Plant
+import io.reactivex.Single
+import io.reactivex.schedulers.Schedulers
 
 interface MainRepository {
 
-    fun getPlantList(): List<Plant>
+    fun getPlantList(): Single<List<Plant>>
 }
 
-class MainRepositoryImpl : MainRepository {
+class MainRepositoryImpl(
+    private val apiService: ApiService,
+    private val preferenceStorage: PreferenceStorage
+) : MainRepository {
 
-    override fun getPlantList(): List<Plant> {
-        val plantList = mutableListOf<Plant>()
-
-        for (i in 0 until 5) {
-            plantList.add(Plant(i, "다육2", "다육2는 기여어"))
-        }
-
-        return plantList
-    }
+    override fun getPlantList(): Single<List<Plant>> =
+        apiService.getPlants(
+            accessToken = preferenceStorage.accessToken ?: "",
+            userId = preferenceStorage.userId
+        ).subscribeOn(Schedulers.io())
 }

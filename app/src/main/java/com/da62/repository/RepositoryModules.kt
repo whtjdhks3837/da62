@@ -9,5 +9,5 @@ val repositoryModules = module {
 
     factory { DetailRepositoryImpl() as DetailRepository }
 
-    factory { MainRepositoryImpl() as MainRepository }
+    factory { MainRepositoryImpl(get(), get()) as MainRepository }
 }

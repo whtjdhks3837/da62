@@ -2,6 +2,10 @@ package com.da62.datasource.api
 
 import com.da62.model.*
 import io.reactivex.Observable
+import com.da62.model.KakaoProfile
+import com.da62.model.KakaoTalkProfile
+import com.da62.model.Plant
+import com.da62.model.User
 import io.reactivex.Single
 import retrofit2.http.*
 
@@ -24,8 +28,13 @@ interface ApiService {
         @Query("word") word: String
     ): Observable<List<String>>
 
+    @FormUrlEncoded
     @POST("/api/plants")
-    fun getPlants(@Header("Authorization") accessToken: String)
+    fun getPlants(
+        @Header("Authorization") accessToken: String,
+        @Field("userId") userId: Int,
+        @Field("page") page: Int = 1
+    ): Single<List<Plant>>
 }
 
 interface KakaoApiService {

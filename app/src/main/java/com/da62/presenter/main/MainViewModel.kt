@@ -8,6 +8,8 @@ import com.da62.model.Plant
 import com.da62.presenter.base.BaseViewModel
 import com.da62.usecase.MainUseCase
 import com.da62.util.SingleLiveEvent
+import com.da62.util.add
+import io.reactivex.android.schedulers.AndroidSchedulers
 
 class MainViewModel(
     private val useCase: MainUseCase
@@ -32,7 +34,16 @@ class MainViewModel(
         get() = _clickToAdd
 
     init {
-        _plantList.value = useCase.getPlantList()
+
+        compositeDisposable add useCase.getPlantList()
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                _plantList.value = it
+            }, {
+                it.printStackTrace()
+            })
+
+
 
         _isAddVisible.value = true
 

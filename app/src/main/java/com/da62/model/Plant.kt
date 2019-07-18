@@ -8,5 +8,9 @@ package com.da62.model
 data class Plant(
     val id: Int = 0,
     val name: String = "",
-    val description: String = ""
+    val description: String = "",
+    val alarm: Boolean = false,
+    val card: String = "",
+    val kind: String = ""
+
 )
