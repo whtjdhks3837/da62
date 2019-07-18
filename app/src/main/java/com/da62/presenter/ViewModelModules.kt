@@ -9,8 +9,8 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val viewModelModules = module {
-    viewModel { SplashViewModel() }
-    viewModel { LoginViewModel(get()) }
+    viewModel { SplashViewModel(get()) }
+    viewModel { LoginViewModel(get(), get()) }
     viewModel { MainViewModel(get()) }
     viewModel { DetailViewModel(get()) }
     viewModel { PlantRegistViewModel(get()) }
