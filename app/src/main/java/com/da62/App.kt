@@ -1,7 +1,9 @@
 package com.da62
 
 import android.app.Application
+import android.util.Log
 import com.da62.datasource.di.appModules
+import com.google.firebase.iid.FirebaseInstanceId
 import com.kakao.auth.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -17,6 +19,14 @@ class App : Application() {
 
             modules(appModules)
         }
+        FirebaseInstanceId.getInstance().instanceId
+            .addOnCompleteListener  { task ->
+                if (task.isSuccessful) {
+                    task.result?.run {
+                        Log.i("TAGTAG", "$token")
+                    }
+                }
+            }
     }
 
     private val kakaoAdapter = object : KakaoAdapter() {

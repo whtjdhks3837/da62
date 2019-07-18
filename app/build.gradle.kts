@@ -70,6 +70,9 @@ dependencies {
     implementation(Libraries.anko)
     implementation(Libraries.lottie)
 
+    implementation(Libraries.firebase)
+    implementation(Libraries.firebaseMessaging)
+
     testImplementation(TestLibraries.junit)
     androidTestImplementation(TestLibraries.rules)
     androidTestImplementation(TestLibraries.espressoCore)
@@ -79,3 +82,5 @@ dependencies {
     // Kakao
     implementation(group = Libraries.kakaoGroup, name = Libraries.kakaoName, version = Libraries.kakaoVersion)
 }
+
+apply(mapOf("plugin" to BuildPlugins.firebasePlugin))

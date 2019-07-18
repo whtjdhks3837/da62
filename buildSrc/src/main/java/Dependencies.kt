@@ -7,6 +7,7 @@ object BuildPlugins {
 
     private object Versions {
         const val gradle = "3.4.1"
+        const val firebase = "4.2.0"
     }
 
     // app  build
@@ -14,10 +15,12 @@ object BuildPlugins {
     const val kapt = "kapt"
     const val androidExtension = "android.extensions"
     const val android = "android"
+    const val firebasePlugin = "com.google.gms.google-services"
 
     // root build
     const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Kotlin.version}"
     const val buildGradle = "com.android.tools.build:gradle:${Versions.gradle}"
+    const val firebase = "com.google.gms:google-services:${Versions.firebase}"
 }
 
 object AndroidSdk {
@@ -25,7 +28,6 @@ object AndroidSdk {
     const val minVersion = 21
     const val targetVersion = 28
 }
-
 
 object Libraries {
 
@@ -46,6 +48,8 @@ object Libraries {
         const val rxAndroid = "2.1.1"
         const val rxJava = "2.2.8"
         const val lottie = "3.0.7"
+        const val firebase = "17.0.0"
+        const val firebaseMessaging = "19.0.0"
     }
 
     const val kakaoGroup = "com.kakao.sdk"
@@ -77,6 +81,8 @@ object Libraries {
     const val rxJava = "io.reactivex.rxjava2:rxjava:${Versions.rxJava}"
 
     const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
+    const val firebase = "com.google.firebase:firebase-core:${Versions.firebase}"
+    const val firebaseMessaging = "com.google.firebase:firebase-messaging:${Versions.firebaseMessaging}"
 }
 
 object TestLibraries {

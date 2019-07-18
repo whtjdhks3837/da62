@@ -18,6 +18,14 @@
                 android:name="com.kakao.sdk.AppKey"
                 android:value="@string/kakao_app_key"/>
 
+        <meta-data
+                android:name="com.google.firebase.messaging.default_notification_icon"
+                android:resource="@drawable/fullip_logo" />
+
+        <meta-data
+                android:name="com.google.firebase.messaging.default_notification_color"
+                android:resource="@color/colorAccent" />
+
         <activity android:name="com.da62.presenter.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -36,6 +44,13 @@
         <activity android:name=".presenter.detail.DetailActivity"/>
 
         <activity android:name=".presenter.write.plant.PlantRegistActivity"/>
-    </application>
 
+        <service
+                android:name=".java.MyFirebaseMessagingService"
+                android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+    </application>
 </manifest>
