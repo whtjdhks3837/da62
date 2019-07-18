@@ -12,7 +12,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorMain">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -73,11 +74,12 @@
 
             <ImageView
                 android:id="@+id/detail_thumbnail"
-                android:layout_width="88dp"
-                android:layout_height="107dp"
+                android:layout_width="142dp"
+                android:layout_height="@dimen/match_constraint"
                 android:layout_marginTop="51dp"
                 android:src="@drawable/ic_illust_1"
                 android:transitionName="pair_thumbnail"
+                app:layout_constraintDimensionRatio="1: 1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/detail_title" />
@@ -91,8 +93,8 @@
 
             <ImageButton
                 android:id="@+id/detail_water"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:background="@drawable/bg_water_blue"
                 android:elevation="2dp"
                 android:src="@drawable/icon_water"
@@ -109,8 +111,8 @@
 
             <ImageButton
                 android:id="@+id/detail_heart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:background="@drawable/bg_heart_pink"
                 android:elevation="2dp"
                 android:src="@drawable/icon_heart"
@@ -126,7 +128,7 @@
                 android:src="@drawable/ic_path"
                 app:layout_constraintEnd_toStartOf="@id/detail_name"
                 app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@id/detail_thumbnail"
                 app:layout_constraintTop_toBottomOf="@id/detail_thumbnail" />
 
             <TextView
@@ -134,11 +136,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:textColor="@color/colorMain"
+                android:textColor="@color/green"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/detail_name_icon"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/detail_thumbnail"
                 app:layout_constraintStart_toEndOf="@id/detail_name_icon"
                 app:layout_constraintTop_toTopOf="@id/detail_name_icon"
                 tools:text="김떡잎" />
