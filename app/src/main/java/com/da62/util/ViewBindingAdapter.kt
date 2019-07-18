@@ -1,19 +1,15 @@
 package com.da62.util
 
-import android.animation.Animator
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.airbnb.lottie.LottieAnimationView
 import com.da62.model.ListType
 import com.da62.model.Plant
 import com.da62.presenter.main.MainAdapter
-import com.da62.presenter.splash.SplashEventListener
 
 @BindingAdapter("mainItems")
 fun setAddItems(recyclerView: RecyclerView, items: List<Plant>?) {
@@ -61,29 +57,6 @@ fun goneUnless(view: View, visible: Boolean?) {
     }
 }
 
-@BindingAdapter("lottieAnimation")
-fun lottieAnimation(lottie: LottieAnimationView, eventListener: SplashEventListener) {
-    lottie.setAnimation("splash.json")
-    lottie.playAnimation()
-    lottie.addAnimatorListener(object : Animator.AnimatorListener {
-        override fun onAnimationRepeat(animation: Animator?) {
-
-        }
-
-        override fun onAnimationEnd(animation: Animator?) {
-            eventListener.finishAnimation()
-        }
-
-        override fun onAnimationCancel(animation: Animator?) {
-
-        }
-
-        override fun onAnimationStart(animation: Animator?) {
-
-        }
-
-    })
-}
 @BindingAdapter("waterDate")
 fun setWaterDate(view: TextView, date: String?) {
     view.text = " 부터"

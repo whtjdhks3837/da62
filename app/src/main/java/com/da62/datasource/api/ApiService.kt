@@ -23,6 +23,9 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Query("word") word: String
     ): Observable<List<String>>
+
+    @POST("/api/plants")
+    fun getPlants(@Header("Authorization") accessToken: String)
 }
 
 interface KakaoApiService {
