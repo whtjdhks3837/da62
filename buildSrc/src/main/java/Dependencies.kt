@@ -6,7 +6,7 @@ object Kotlin {
 object BuildPlugins {
 
     private object Versions {
-        const val gradle = "3.5.0-beta05"
+        const val gradle = "3.5.0-rc01"
     }
 
     // app  build

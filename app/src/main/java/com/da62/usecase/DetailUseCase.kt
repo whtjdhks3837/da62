@@ -2,10 +2,13 @@ package com.da62.usecase
 
 import com.da62.model.Plant
 import com.da62.repository.DetailRepository
+import io.reactivex.Single
 
 interface DetailUseCase {
 
     fun getInfoList(): List<Plant>
+
+    fun getDetail(id: Int): Single<Plant>
 }
 
 class DetailUseCaseImpl(private val repository: DetailRepository) : DetailUseCase {
@@ -19,5 +22,7 @@ class DetailUseCaseImpl(private val repository: DetailRepository) : DetailUseCas
 
         return dummy
     }
+
+    override fun getDetail(id: Int): Single<Plant> = repository.getDetail(id)
 
 }

@@ -16,6 +16,7 @@ import com.da62.model.Plant
 import com.da62.presenter.base.BaseActivity
 import com.da62.presenter.detail.DetailActivity
 import com.da62.presenter.write.plant.PlantRegistActivity
+import com.da62.util.EXTRA_PLANT_ID
 import com.da62.util.dp2px
 import org.jetbrains.anko.intentFor
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -58,7 +59,10 @@ class MainActivity : BaseActivity(), MainEventListener {
         val imageView = view.findViewById<View>(R.id.item_main_image)
         val pair = Pair(imageView, imageView.transitionName)
         val optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(this, pair)
-        startActivity(intentFor<DetailActivity>(), optionsCompat.toBundle())
+        startActivity(
+            intentFor<DetailActivity>(EXTRA_PLANT_ID to plant.id),
+            optionsCompat.toBundle()
+        )
     }
 }
 

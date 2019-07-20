@@ -7,4 +7,5 @@
     <string name="start_info3">관리를 제대로 못해서 화분이\n시들기 일쑤였나요?</string>
     <string name="detail_title">식물 상세</string>
     <string name="item_main_empty_message">식물을 등록해주세요</string>
+    <string name="detail_info_tips">관리팁(특별)</string>
 </resources>

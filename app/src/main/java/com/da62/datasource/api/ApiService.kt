@@ -35,6 +35,12 @@ interface ApiService {
         @Field("userId") userId: Int,
         @Field("page") page: Int = 1
     ): Single<List<Plant>>
+
+    @POST("/api/plants/{id}/detail")
+    fun getDetail(
+        @Header("Authorization") accessToken: String,
+        @Path("id") id: Int
+    ): Single<Plant>
 }
 
 interface KakaoApiService {

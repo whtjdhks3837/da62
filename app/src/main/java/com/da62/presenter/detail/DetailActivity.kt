@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearSnapHelper
 import com.da62.R
 import com.da62.databinding.ActivityDetailBinding
 import com.da62.presenter.base.BaseActivity
+import com.da62.util.EXTRA_PLANT_ID
 import com.da62.util.dp2px
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -15,6 +16,10 @@ class DetailActivity : BaseActivity() {
 
     private val viewModel by viewModel<DetailViewModel>()
     private lateinit var binding: ActivityDetailBinding
+
+    private val detailId by lazy {
+        intent.getIntExtra(EXTRA_PLANT_ID, 0)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,8 +49,10 @@ class DetailActivity : BaseActivity() {
         infoSnapHelper.attachToRecyclerView(binding.detailHorizontalRecyclerView)
 
         viewModel.clickToBack.observe(this, Observer {
-           supportFinishAfterTransition()
+            supportFinishAfterTransition()
         })
+
+        viewModel.loadDetail(detailId)
 
     }
 
