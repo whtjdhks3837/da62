@@ -18,5 +18,7 @@ data class Plant(
     val waterDate: Int = 0,
     val updateLove: Date = Date(),
     val love: Int = 0,
-    val grow: String = ""
+    val grow: String = "",
+    val raiseDate: Date = Date(),
+    val plantInfo: PlantInfo? = null
 )

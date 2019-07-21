@@ -1,12 +1,13 @@
 package com.da62.usecase
 
 import com.da62.model.User
+import com.da62.model.UserData
 import com.da62.repository.LoginRepository
 import io.reactivex.Single
 
 interface LoginUseCase {
 
-    fun login(kakaoToken: String): Single<User>
+    fun login(kakaoToken: String): Single<UserData>
 
     fun saveUser(user: User)
 }

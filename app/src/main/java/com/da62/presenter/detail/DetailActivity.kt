@@ -8,8 +8,11 @@ import androidx.recyclerview.widget.LinearSnapHelper
 import com.da62.R
 import com.da62.databinding.ActivityDetailBinding
 import com.da62.presenter.base.BaseActivity
+import com.da62.presenter.gallery.GalleryActivity
 import com.da62.util.EXTRA_PLANT_ID
+import com.da62.util.EXTRA_PLANT_THUMB_NAIL
 import com.da62.util.dp2px
+import org.jetbrains.anko.intentFor
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailActivity : BaseActivity() {
@@ -51,6 +54,13 @@ class DetailActivity : BaseActivity() {
         viewModel.clickToBack.observe(this, Observer {
             supportFinishAfterTransition()
         })
+
+        viewModel.clickToGallery.observe(this, Observer {
+            startActivity(intentFor<GalleryActivity>())
+        })
+
+        val thumbNaiExtra = intent.getStringExtra(EXTRA_PLANT_THUMB_NAIL)
+        viewModel.configureThumbnail(thumbNaiExtra)
 
         viewModel.loadDetail(detailId)
 

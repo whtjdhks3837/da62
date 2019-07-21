@@ -10,4 +10,6 @@ val repositoryModules = module {
     factory { DetailRepositoryImpl(get(), get()) as DetailRepository }
 
     factory { MainRepositoryImpl(get(), get()) as MainRepository }
+
+    factory { GalleryRepositoryImpl() as GalleryRepository }
 }

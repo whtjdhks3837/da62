@@ -1,6 +1,7 @@
 package com.da62.presenter
 
 import com.da62.presenter.detail.DetailViewModel
+import com.da62.presenter.gallery.GalleryViewModel
 import com.da62.presenter.login.LoginViewModel
 import com.da62.presenter.main.MainViewModel
 import com.da62.presenter.splash.SplashViewModel
@@ -14,4 +15,5 @@ val viewModelModules = module {
     viewModel { MainViewModel(get()) }
     viewModel { DetailViewModel(get()) }
     viewModel { PlantRegistViewModel(get()) }
+    viewModel { GalleryViewModel(get()) }
 }

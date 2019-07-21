@@ -17,13 +17,13 @@ class DetailRepositoryImpl(
 ) : DetailRepository {
 
     override fun getDetail(id: Int): Single<Plant> {
-        /*return apiService.getDetail(
+        return apiService.getDetail(
             accessToken = preferenceStorage.accessToken ?: "",
             id = id
         ).subscribeOn(Schedulers.io())
-            .map { dummy }*/
+        //.map { dummy }
 
-        return Single.just(dummy)
+        //   return Single.just(dummy)
     }
 
     private val dummy = Plant(

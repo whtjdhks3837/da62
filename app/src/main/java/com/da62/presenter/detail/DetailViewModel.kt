@@ -38,6 +38,14 @@ class DetailViewModel(private val useCase: DetailUseCase) : BaseViewModel() {
     val waterGauge: LiveData<Int>
         get() = _waterGauge
 
+    private val _clickToGallery = SingleLiveEvent<Any>()
+    val clickToGallery: LiveData<Any>
+        get() = _clickToGallery
+
+    private val _card = MutableLiveData<String>()
+    val card: LiveData<String>
+        get() = _card
+
     init {
 
         _name.addSource(plant) {
@@ -63,9 +71,17 @@ class DetailViewModel(private val useCase: DetailUseCase) : BaseViewModel() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 _plant.value = it
-                error { it.name }
+
             }, {
 
             })
+    }
+
+    fun clickToGallery() {
+        _clickToGallery.call()
+    }
+
+    fun configureThumbnail(card: String) {
+        _card.value = card
     }
 }

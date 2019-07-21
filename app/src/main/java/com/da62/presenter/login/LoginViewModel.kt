@@ -52,8 +52,8 @@ class LoginViewModel(
             .subscribe({
                 _progress.value = false
                 useCase.saveUser(it)
-                preferenceStorage.accessToken = it.userData.token
-                preferenceStorage.userId = it.userData.message
+                preferenceStorage.accessToken = it.token
+                preferenceStorage.userId = it.message
                 preferenceStorage.isUserRegistered = true
                 _login.call()
             }, {

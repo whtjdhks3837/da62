@@ -77,12 +77,13 @@
                 android:layout_width="142dp"
                 android:layout_height="@dimen/match_constraint"
                 android:layout_marginTop="51dp"
-                android:src="@drawable/ic_illust_1"
                 android:transitionName="pair_thumbnail"
+                app:growThumbNail="@{viewModel.card}"
                 app:layout_constraintDimensionRatio="1: 1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/detail_title" />
+                app:layout_constraintTop_toBottomOf="@id/detail_title"
+                tools:src="@drawable/ic_illust_1" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guide_water"
@@ -269,6 +270,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:background="@null"
+                android:onClick="@{() ->viewModel.clickToGallery()}"
                 android:src="@drawable/icon_plus"
                 app:layout_constraintBottom_toBottomOf="@id/detail_gallery_text"
                 app:layout_constraintEnd_toStartOf="@id/detail_gallery_trash"

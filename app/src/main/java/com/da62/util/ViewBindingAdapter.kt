@@ -4,9 +4,13 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.TextView
+import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.da62.R
+import com.da62.model.Card
 import com.da62.model.ListType
 import com.da62.model.Plant
 import com.da62.presenter.main.MainAdapter
@@ -57,31 +61,20 @@ fun goneUnless(view: View, visible: Boolean?) {
     }
 }
 
-@BindingAdapter("waterDate")
-fun setWaterDate(view: TextView, date: String?) {
-    view.text = " 부터"
-    date?.let {
-        view.text = "${it.replace("-", ":")} ${view.text}"
-    }
-}
 
-@BindingAdapter("waterTime")
-fun setWaterTime(view: TextView, time: String?) {
-    time?.let {
-        val hourMin = it.split(":")
-        var hour = hourMin[0]
-        var min = hourMin[1]
-        var meridiem = "AM"
-        if (hour.toInt() >= 12) {
-            meridiem = "PM"
-            hour = "${hour.toInt() - 12}"
+@BindingAdapter("growThumbNail")
+fun growThumbNail(imageView: ImageView, grow: String?) {
+    grow?.let {
+        val src = when (it) {
+            "TREE" -> R.drawable.ic_illust_2
+            "DRUPE" -> R.drawable.ic_illust_5
+            "GRASS" -> R.drawable.ic_illust_1
+            "LEAF" -> R.drawable.ic_illust_3
+            else -> R.drawable.ic_illust_4
         }
-        if (hour.length == 1) {
-            hour = "0$hour"
-        }
-        if (min.length == 1) {
-            min = "0$min"
-        }
-        view.text = "$hour : $min $meridiem"
+
+        Glide.with(imageView)
+            .load(src)
+            .into(imageView)
     }
 }
