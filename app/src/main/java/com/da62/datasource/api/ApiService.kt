@@ -1,18 +1,28 @@
 package com.da62.datasource.api
 
-import com.da62.model.KakaoProfile
-import com.da62.model.KakaoTalkProfile
-import com.da62.model.User
+import com.da62.model.*
+import io.reactivex.Observable
 import io.reactivex.Single
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
 
-    @POST("/login")
+    @POST("/api/login")
     fun postLogin(@Body kakaoToken: String): Single<User>
+
+    @POST("/api/plants/save")
+    fun savePlant(
+        @Header("Authorization") token: String,
+        @Header("Content-Type") contentType: String = "application/json",
+        @Body plantDto: SavePlant,
+        @Query("userId") userId: Int
+    ): Single<String>
+
+    @POST("/api/getPlantNames")
+    fun getPlantNames(
+        @Header("Authorization") token: String,
+        @Query("word") word: String
+    ): Observable<List<String>>
 }
 
 interface KakaoApiService {
