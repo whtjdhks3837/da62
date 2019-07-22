@@ -21,19 +21,5 @@ class DetailRepositoryImpl(
             accessToken = preferenceStorage.accessToken ?: "",
             id = id
         ).subscribeOn(Schedulers.io())
-        //.map { dummy }
-
-        //   return Single.just(dummy)
     }
-
-    private val dummy = Plant(
-        id = 2,
-        name = "다육이",
-        description = "test",
-        alarm = false,
-        card = "FLOWER",
-        kind = "123",
-        waterDate = 4,
-        love = 7
-    )
 }

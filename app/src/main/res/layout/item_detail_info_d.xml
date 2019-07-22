@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="plant"
-            type="com.da62.model.Plant" />
+            name="plantInfo"
+            type="com.da62.model.PlantInfo" />
     </data>
 
 

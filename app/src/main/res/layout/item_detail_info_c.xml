@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="plant"
-            type="com.da62.model.Plant" />
+            name="plantInfo"
+            type="com.da62.model.PlantInfo" />
     </data>
 
 
@@ -46,6 +46,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginEnd="32dp"
             android:scrollbars="vertical"
+            android:text="@{plantInfo.fncltyInfo}"
             android:textColor="@color/white"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"

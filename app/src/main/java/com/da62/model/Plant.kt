@@ -1,6 +1,5 @@
 package com.da62.model
 
-import java.util.*
 
 /**
  *  @param id
@@ -10,15 +9,13 @@ import java.util.*
 data class Plant(
     val id: Int = 0,
     val name: String = "",
-    val description: String = "",
     val alarm: Boolean = false,
     val card: String = "",
     val kind: String = "",
-    val waterTime: Date = Date(),
+    val waterTime: String = "",
     val waterDate: Int = 0,
-    val updateLove: Date = Date(),
     val love: Int = 0,
     val grow: String = "",
-    val raiseDate: Date = Date(),
+    val raiseDate: String = "",
     val plantInfo: PlantInfo? = null
 )

@@ -137,7 +137,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@{viewModel.name}"
+                android:text="@{viewModel.plant.name}"
                 android:textColor="@color/green"
                 android:textSize="22sp"
                 android:textStyle="bold"
@@ -151,14 +151,12 @@
                 android:id="@+id/detail_water_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
                 android:layout_marginTop="20dp"
                 android:text="물주기"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="@id/detail_water_progress"
                 app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintStart_toEndOf="@id/guide_start"
+                app:layout_constraintStart_toEndOf="@id/guide_water"
                 app:layout_constraintTop_toBottomOf="@id/detail_name" />
 
             <ProgressBar
@@ -168,38 +166,44 @@
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"
                 android:max="10"
-                android:progress="@{viewModel.waterGauge}"
+                android:progress="@{viewModel.plant.waterDate}"
                 app:layout_constraintBottom_toBottomOf="@id/detail_water_text"
-                app:layout_constraintEnd_toStartOf="@id/detail_water_date"
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toEndOf="@id/detail_water_text"
                 app:layout_constraintTop_toTopOf="@id/detail_water_text"
+                app:layout_constraintWidth_percent=".494"
                 tools:max="10"
                 tools:progress="5" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guide_progress_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".822" />
 
             <TextView
                 android:id="@+id/detail_water_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
+                android:letterSpacing="0.07"
                 android:text="2일후"
-                android:textColor="@color/colorMain"
+                android:textColor="@color/green"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@id/detail_water_progress"
-                app:layout_constraintEnd_toStartOf="@id/guide_end"
-                app:layout_constraintStart_toEndOf="@id/detail_water_progress"
+                app:layout_constraintStart_toEndOf="@id/guide_progress_text"
                 app:layout_constraintTop_toTopOf="@id/detail_water_progress" />
 
             <TextView
                 android:id="@+id/detail_heart_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
                 android:layout_marginTop="12dp"
                 android:text="애정"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                app:layout_constraintStart_toEndOf="@id/guide_start"
+                app:layout_constraintStart_toEndOf="@id/guide_water"
                 app:layout_constraintTop_toBottomOf="@id/detail_water_text" />
 
 
@@ -209,12 +213,12 @@
                 android:layout_width="@dimen/match_constraint"
                 android:layout_marginEnd="12dp"
                 android:max="10"
-                android:progress="@{viewModel.loveGauge}"
+                android:progress="@{viewModel.plant.love}"
                 app:layout_constraintBottom_toBottomOf="@id/detail_heart_text"
-                app:layout_constraintEnd_toStartOf="@id/detail_heart_percent"
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toStartOf="@id/detail_water_progress"
                 app:layout_constraintTop_toTopOf="@id/detail_heart_text"
+                app:layout_constraintWidth_percent=".494"
                 tools:max="10"
                 tools:progress="5" />
 
@@ -223,12 +227,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
+                android:letterSpacing="0.07"
                 android:text="60%"
-                android:textColor="@color/colorMain"
+                android:textColor="@color/green"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@id/detail_heart_progress"
-                app:layout_constraintEnd_toStartOf="@id/guide_end"
-                app:layout_constraintStart_toEndOf="@id/detail_heart_progress"
+                app:layout_constraintStart_toEndOf="@id/guide_progress_text"
                 app:layout_constraintTop_toTopOf="@id/detail_heart_progress" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -236,7 +240,7 @@
                 android:layout_width="@dimen/match_constraint"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="27dp"
-                app:addPlantsInfo="@{viewModel.plantInfoList}"
+                app:addPlantsInfo="@{viewModel.plantInfo}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/detail_heart_text"

@@ -9,12 +9,15 @@ import com.da62.databinding.ItemDetailInfoBinding
 import com.da62.databinding.ItemDetailInfoCBinding
 import com.da62.databinding.ItemDetailInfoDBinding
 import com.da62.model.Plant
+import com.da62.model.PlantInfo
 
 class DetailInfoAdapter(
     private val lifecycleOwner: LifecycleOwner
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val plantList = mutableListOf<Plant>()
+
+    private lateinit var plantInfo: PlantInfo
 
     private companion object {
         private const val A = 0
@@ -60,6 +63,10 @@ class DetailInfoAdapter(
         }
     }
 
+    fun addItem(plantInfo: PlantInfo) {
+        this.plantInfo = plantInfo
+    }
+
     fun addItems(plantList: List<Plant>) {
         this.plantList.addAll(plantList)
     }
@@ -78,11 +85,13 @@ class DetailInfoAdapter(
     override fun getItemCount(): Int = 4
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when (position) {
-            0 -> (holder as DetailInfoAViewHolder).bind(plantList[position])
-            1 -> (holder as DetailInfoBViewHolder).bind(plantList[position])
-            2 -> (holder as DetailInfoCViewHolder).bind(plantList[position])
-            3 -> (holder as DetailInfoDViewHolder).bind(plantList[position])
+        if (::plantInfo.isInitialized) {
+            when (position) {
+                0 -> (holder as DetailInfoAViewHolder).bind(plantInfo)
+                1 -> (holder as DetailInfoBViewHolder).bind(plantInfo)
+                2 -> (holder as DetailInfoCViewHolder).bind(plantInfo)
+                3 -> (holder as DetailInfoDViewHolder).bind(plantInfo)
+            }
         }
     }
 }
@@ -92,8 +101,8 @@ class DetailInfoAViewHolder(
     private val lifecycleOwner: LifecycleOwner
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(plant: Plant) {
-        binding.plant = plant
+    fun bind(plantInfo: PlantInfo) {
+        binding.plantInfo = plantInfo
         binding.lifecycleOwner = lifecycleOwner
         binding.executePendingBindings()
     }
@@ -104,8 +113,8 @@ class DetailInfoBViewHolder(
     private val lifecycleOwner: LifecycleOwner
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(plant: Plant) {
-        binding.plant = plant
+    fun bind(plantInfo: PlantInfo) {
+        binding.plantInfo = plantInfo
         binding.lifecycleOwner = lifecycleOwner
         binding.executePendingBindings()
     }
@@ -116,8 +125,8 @@ class DetailInfoCViewHolder(
     private val lifecycleOwner: LifecycleOwner
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(plant: Plant) {
-        binding.plant = plant
+    fun bind(plantInfo: PlantInfo) {
+        binding.plantInfo = plantInfo
         binding.lifecycleOwner = lifecycleOwner
         binding.executePendingBindings()
     }
@@ -128,8 +137,8 @@ class DetailInfoDViewHolder(
     private val lifecycleOwner: LifecycleOwner
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(plant: Plant) {
-        binding.plant = plant
+    fun bind(plantInfo: PlantInfo) {
+        binding.plantInfo = plantInfo
         binding.lifecycleOwner = lifecycleOwner
         binding.executePendingBindings()
     }
