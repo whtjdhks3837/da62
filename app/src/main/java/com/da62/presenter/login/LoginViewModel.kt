@@ -53,7 +53,7 @@ class LoginViewModel(
                 _progress.value = false
                 useCase.saveUser(it)
                 preferenceStorage.accessToken = it.token
-                preferenceStorage.userId = it.message
+                preferenceStorage.userId = it.userId
                 preferenceStorage.isUserRegistered = true
                 _login.call()
             }, {

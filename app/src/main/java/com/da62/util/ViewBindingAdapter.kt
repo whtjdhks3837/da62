@@ -3,15 +3,14 @@ package com.da62.util
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.widget.TextView
 import android.widget.CheckBox
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.da62.R
-import com.da62.model.Card
 import com.da62.model.ListType
 import com.da62.model.Plant
 import com.da62.presenter.main.MainAdapter
@@ -93,7 +92,7 @@ fun imageUrl(imageView: ImageView, path: String?) {
     }
 }
 
-@BindingAdapter(value=["growCheckedType", "growType"])
+@BindingAdapter(value = ["growCheckedType", "growType"])
 fun growType(checkBox: CheckBox, checkedType: String, growType: String?) {
 
     val isChecked = growType?.let {
@@ -101,4 +100,33 @@ fun growType(checkBox: CheckBox, checkedType: String, growType: String?) {
     } ?: false
     checkBox.isChecked = isChecked
 
+}
+
+@BindingAdapter("waterDate")
+fun setWaterDate(view: TextView, date: String?) {
+    view.text = " 부터"
+    date?.let {
+        view.text = "${it.replace("-", ":")} ${view.text}"
+    }
+}
+
+@BindingAdapter("waterTime")
+fun setWaterTime(view: TextView, time: String?) {
+    time?.let {
+        val hourMin = it.split(":")
+        var hour = hourMin[0]
+        var min = hourMin[1]
+        var meridiem = "AM"
+        if (hour.toInt() >= 12) {
+            meridiem = "PM"
+            hour = "${hour.toInt() - 12}"
+        }
+        if (hour.length == 1) {
+            hour = "0$hour"
+        }
+        if (min.length == 1) {
+            min = "0$min"
+        }
+        view.text = "$hour : $min $meridiem"
+    }
 }

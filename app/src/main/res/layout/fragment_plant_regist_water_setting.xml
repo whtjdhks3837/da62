@@ -97,7 +97,7 @@
                     android:maxLines="1"
                     android:maxLength="20"
                     android:textColor="@color/colorGreen"
-                    waterDate="@{viewModel.waterDate}"
+                    app:waterDate="@{viewModel.waterDate}"
                     android:textSize="14dp"
                     android:gravity="center_vertical|end"
                     android:paddingEnd="24dp"
