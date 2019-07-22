@@ -5,10 +5,6 @@ import org.koin.dsl.module
 val localDataSourceModules = module {
 
     factory {
-        PlantSpeciesLocalDataSourceImpl() as PlantSpeciesLocalDataSource
-    }
-
-    factory {
         LoginLocalDataSourceImpl() as LoginLocalDataSource
     }
 }

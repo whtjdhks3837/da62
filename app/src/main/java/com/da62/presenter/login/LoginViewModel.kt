@@ -47,6 +47,7 @@ class LoginViewModel(private val useCase: LoginUseCase) : BaseViewModel() {
         compositeDisposable add useCase.login(accessToken)
             .subscribe({
                 _progress.value = false
+                useCase.saveUser(it)
                 _login.call()
             }, {
                 _progress.value = false

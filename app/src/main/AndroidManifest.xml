@@ -35,7 +35,8 @@
 
         <activity android:name=".presenter.detail.DetailActivity"/>
 
-        <activity android:name=".presenter.write.plant.PlantRegistActivity"/>
+        <activity android:name=".presenter.write.plant.PlantRegistActivity"
+                android:windowSoftInputMode="adjustPan"/>
     </application>
 
 </manifest>
