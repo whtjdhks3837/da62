@@ -56,7 +56,7 @@ class DetailActivity : BaseActivity() {
         })
 
         viewModel.clickToGallery.observe(this, Observer {
-            startActivity(intentFor<GalleryActivity>())
+            startActivity(intentFor<GalleryActivity>(EXTRA_PLANT_ID to it))
         })
 
         val thumbNaiExtra = intent.getStringExtra(EXTRA_PLANT_THUMB_NAIL)

@@ -4,6 +4,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.TextView
+import android.widget.CheckBox
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.GridLayoutManager
@@ -77,4 +78,27 @@ fun growThumbNail(imageView: ImageView, grow: String?) {
             .load(src)
             .into(imageView)
     }
+}
+
+@BindingAdapter("imageUrl")
+fun imageUrl(imageView: ImageView, path: String?) {
+    path?.let {
+        Glide.with(imageView)
+            .load(it)
+            .into(imageView)
+    } ?: run {
+        Glide.with(imageView)
+            .load(R.drawable.ic_camera_placeholder)
+            .into(imageView)
+    }
+}
+
+@BindingAdapter(value=["growCheckedType", "growType"])
+fun growType(checkBox: CheckBox, checkedType: String, growType: String?) {
+
+    val isChecked = growType?.let {
+        checkedType == it
+    } ?: false
+    checkBox.isChecked = isChecked
+
 }

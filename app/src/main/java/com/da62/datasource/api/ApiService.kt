@@ -7,6 +7,8 @@ import com.da62.model.KakaoTalkProfile
 import com.da62.model.Plant
 import com.da62.model.User
 import io.reactivex.Single
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.http.*
 
 interface ApiService {
@@ -41,6 +43,14 @@ interface ApiService {
         @Header("Authorization") accessToken: String,
         @Path("id") id: Int
     ): Single<Plant>
+
+    @Multipart
+    @POST("/api/uploadImage")
+    fun uploadImage(
+        @Header("Authorization") accessToken: String,
+        @Part image: MultipartBody.Part,
+        @PartMap params: Map<String, @JvmSuppressWildcards RequestBody>
+    ): Single<Response<Plant>>
 }
 
 interface KakaoApiService {

@@ -11,5 +11,5 @@ val repositoryModules = module {
 
     factory { MainRepositoryImpl(get(), get()) as MainRepository }
 
-    factory { GalleryRepositoryImpl() as GalleryRepository }
+    factory { GalleryRepositoryImpl(get(), get()) as GalleryRepository }
 }

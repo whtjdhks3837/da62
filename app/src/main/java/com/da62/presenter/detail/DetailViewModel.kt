@@ -14,6 +14,8 @@ import org.jetbrains.anko.error
 
 class DetailViewModel(private val useCase: DetailUseCase) : BaseViewModel() {
 
+    private var plantId: Int = 0
+
     private val _plantInfoList = MutableLiveData<List<Plant>>()
     val plantInfoList: LiveData<List<Plant>>
         get() = _plantInfoList
@@ -38,8 +40,8 @@ class DetailViewModel(private val useCase: DetailUseCase) : BaseViewModel() {
     val waterGauge: LiveData<Int>
         get() = _waterGauge
 
-    private val _clickToGallery = SingleLiveEvent<Any>()
-    val clickToGallery: LiveData<Any>
+    private val _clickToGallery = SingleLiveEvent<Int>()
+    val clickToGallery: LiveData<Int>
         get() = _clickToGallery
 
     private val _card = MutableLiveData<String>()
@@ -71,14 +73,14 @@ class DetailViewModel(private val useCase: DetailUseCase) : BaseViewModel() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 _plant.value = it
-
+                plantId = id
             }, {
 
             })
     }
 
     fun clickToGallery() {
-        _clickToGallery.call()
+        _clickToGallery.value = plantId
     }
 
     fun configureThumbnail(card: String) {
