@@ -12,7 +12,6 @@ import com.da62.util.toDateString
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
-import org.jetbrains.anko.error
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -50,6 +49,14 @@ class GalleryViewModel(private val useCase: GalleryUseCase) : BaseViewModel() {
     val showToast: LiveData<String>
         get() = _showToast
 
+    private val _visibleProgress = MutableLiveData<Boolean>()
+    val visibleProgress: LiveData<Boolean>
+        get() = _visibleProgress
+
+    private val _uploadComplete = SingleLiveEvent<Any>()
+    val uploadComplete: LiveData<Any>
+        get() = _uploadComplete
+
     private val uploadSubject = PublishSubject.create<PlantImageRequest>()
 
     init {
@@ -59,13 +66,17 @@ class GalleryViewModel(private val useCase: GalleryUseCase) : BaseViewModel() {
             TimeUnit.MICROSECONDS,
             AndroidSchedulers.mainThread()
         )
-            .flatMapSingle {
-                error { it }
-                useCase.uploadImage(it)
-            }
+            .doOnSubscribe { _visibleProgress.postValue(true) }
+            .flatMapSingle { useCase.uploadImage(it) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({}, {
+            .subscribe({
+                _visibleProgress.value = false
+                _showToast.value = "업로드 성공!"
+                _uploadComplete.call()
+            }, {
+                _visibleProgress.postValue(false)
+                _showToast.postValue("오류가 발생했습니다.")
                 it.printStackTrace()
             })
     }

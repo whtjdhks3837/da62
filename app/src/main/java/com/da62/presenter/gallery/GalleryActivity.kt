@@ -50,6 +50,10 @@ class GalleryActivity : BaseActivity() {
             toast(it)
         })
 
+        viewModel.uploadComplete.observe(this, Observer {
+            finish()
+        })
+
         viewModel.configureGallery(plantId)
     }
 
