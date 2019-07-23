@@ -2,7 +2,13 @@ package com.da62.datasource.api
 
 import com.da62.model.*
 import io.reactivex.Observable
+import com.da62.model.KakaoProfile
+import com.da62.model.KakaoTalkProfile
+import com.da62.model.Plant
+import com.da62.model.User
 import io.reactivex.Single
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.http.*
 
 interface ApiService {
@@ -23,6 +29,28 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Query("word") word: String
     ): Observable<List<String>>
+
+    @FormUrlEncoded
+    @POST("/api/plants")
+    fun getPlants(
+        @Header("Authorization") accessToken: String,
+        @Field("userId") userId: Int,
+        @Field("page") page: Int = 1
+    ): Single<List<Plant>>
+
+    @POST("/api/plants/{id}/detail")
+    fun getDetail(
+        @Header("Authorization") accessToken: String,
+        @Path("id") id: Int
+    ): Single<Plant>
+
+    @Multipart
+    @POST("/api/uploadImage")
+    fun uploadImage(
+        @Header("Authorization") accessToken: String,
+        @Part image: MultipartBody.Part,
+        @PartMap params: Map<String, @JvmSuppressWildcards RequestBody>
+    ): Single<Response<Plant>>
 }
 
 interface KakaoApiService {
