@@ -38,7 +38,8 @@
 
         <activity android:name=".presenter.detail.DetailActivity" />
 
-        <activity android:name=".presenter.write.plant.PlantRegistActivity" />
+        <activity android:name=".presenter.write.plant.PlantRegistActivity"
+                android:windowSoftInputMode="adjustPan"/>
 
         <activity android:name=".presenter.gallery.GalleryActivity" />
         
