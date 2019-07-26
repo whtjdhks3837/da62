@@ -16,6 +16,10 @@
         <item name="android:progressDrawable">@drawable/bg_main_progressbar</item>
     </style>
 
+    <style name="LoveProgressBar" parent="HorizontalProgressBar">
+        <item name="android:progressDrawable">@drawable/bg_main_progressbar_love</item>
+    </style>
+
     <style name="DetailWaterProgress" parent="HorizontalProgressBar">
         <item name="android:progressDrawable">@drawable/bg_detail_progressbar</item>
         <item name="android:progressBackgroundTint">#1a6d5e</item>

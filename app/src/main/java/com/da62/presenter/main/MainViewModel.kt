@@ -43,8 +43,6 @@ class MainViewModel(
                 it.printStackTrace()
             })
 
-
-
         _isAddVisible.value = true
 
         _isAddVisible.addSource(_clickToViewType) {

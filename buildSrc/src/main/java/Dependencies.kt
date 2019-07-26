@@ -36,6 +36,7 @@ object Libraries {
         const val constraintLayout = "2.0.0-beta1"
         const val glide = "4.8.0"
         const val glideTransform = "4.0.0"
+        const val indicator = "1.0.10"
         const val kakao = "1.17.0"
         const val koin = "2.0.0"
         const val ktx = "1.0.1"
@@ -77,6 +78,8 @@ object Libraries {
     const val rxJava = "io.reactivex.rxjava2:rxjava:${Versions.rxJava}"
 
     const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
+
+    const val indicator = "com.ryanjeffreybrooks:indefinitepagerindicator:${Versions.indicator}"
 }
 
 object TestLibraries {

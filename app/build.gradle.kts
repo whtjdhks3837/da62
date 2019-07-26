@@ -83,6 +83,8 @@ dependencies {
 
     implementation(Libraries.lottie)
 
+    implementation(Libraries.indicator)
+
     // Kakao
     implementation(
         group = Libraries.kakaoGroup,

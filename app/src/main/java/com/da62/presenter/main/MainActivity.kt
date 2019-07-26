@@ -48,6 +48,7 @@ class MainActivity : BaseActivity(), MainEventListener {
                 )
             )
         }
+        binding.mainIndicator.attachToRecyclerView(binding.mainRecyclerView)
 
         snapHelper.attachToRecyclerView(binding.mainRecyclerView)
 
