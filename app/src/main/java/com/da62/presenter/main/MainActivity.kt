@@ -1,5 +1,7 @@
 package com.da62.presenter.main
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.core.app.ActivityOptionsCompat
@@ -53,7 +55,7 @@ class MainActivity : BaseActivity(), MainEventListener {
         snapHelper.attachToRecyclerView(binding.mainRecyclerView)
 
         viewModel.clickToAdd.observe(this, Observer {
-            startActivity(intentFor<PlantRegistActivity>())
+            startActivityForResult(intentFor<PlantRegistActivity>(), 0x100)
         })
     }
 
@@ -68,6 +70,15 @@ class MainActivity : BaseActivity(), MainEventListener {
             ),
             optionsCompat.toBundle()
         )
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 0x100) {
+            if (resultCode == Activity.RESULT_OK) {
+
+            }
+        }
     }
 }
 
