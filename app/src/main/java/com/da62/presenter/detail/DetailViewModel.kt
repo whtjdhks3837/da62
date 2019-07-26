@@ -46,8 +46,29 @@ class DetailViewModel(private val useCase: DetailUseCase) : BaseViewModel() {
         "${diffDays}일후"
     }
 
+    val lovePercent: LiveData<String> = Transformations.map(plant) {
+        val percent = (it.love / 10) * 100
+        "$percent%"
+    }
+
+    private val _clickToWater = SingleLiveEvent<Any>()
+    val clickToWater: LiveData<Any>
+        get() = _clickToWater
+
+    private val _clickToLove = SingleLiveEvent<Any>()
+    val clickToLove: LiveData<Any>
+        get() = _clickToLove
+
     fun clickToBack() {
         _clickToBack.call()
+    }
+
+    fun clickToWater() {
+        _clickToWater.call()
+    }
+
+    fun clickToLove() {
+        _clickToLove.call()
     }
 
     fun loadDetail(id: Int) {
