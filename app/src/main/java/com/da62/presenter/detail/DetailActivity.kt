@@ -12,6 +12,7 @@ import com.da62.presenter.gallery.GalleryActivity
 import com.da62.util.EXTRA_PLANT_ID
 import com.da62.util.EXTRA_PLANT_THUMB_NAIL
 import com.da62.util.dp2px
+import com.da62.util.waterDialog
 import org.jetbrains.anko.intentFor
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -57,6 +58,10 @@ class DetailActivity : BaseActivity() {
 
         viewModel.clickToGallery.observe(this, Observer {
             startActivity(intentFor<GalleryActivity>(EXTRA_PLANT_ID to it))
+        })
+
+        viewModel.clickToWater.observe(this, Observer {
+            waterDialog("123")
         })
 
         val thumbNaiExtra = intent.getStringExtra(EXTRA_PLANT_THUMB_NAIL)

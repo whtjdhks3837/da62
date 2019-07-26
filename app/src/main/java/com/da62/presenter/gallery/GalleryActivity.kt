@@ -114,7 +114,7 @@ class GalleryActivity : BaseActivity() {
             title = "권한 안내"
             message = "권한이 거부되어있습니다. [설정] 에서 권한을 허용해야 합니다."
             positiveButton("확인") {}
-        }
+        }.show()
     }
 
 }
