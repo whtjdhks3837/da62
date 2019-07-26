@@ -35,7 +35,7 @@ interface ApiService {
     fun getPlants(
         @Header("Authorization") accessToken: String,
         @Field("userId") userId: Int,
-        @Field("page") page: Int = 1
+        @Field("page") page: Int = 0
     ): Single<List<Plant>>
 
     @POST("/api/plants/{id}/detail")
