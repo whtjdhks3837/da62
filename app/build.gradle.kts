@@ -25,6 +25,11 @@ android {
     }
 
     dataBinding.isEnabled = true
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
 }
 
 androidExtensions {
@@ -79,5 +84,9 @@ dependencies {
     implementation(Libraries.lottie)
 
     // Kakao
-    implementation(group = Libraries.kakaoGroup, name = Libraries.kakaoName, version = Libraries.kakaoVersion)
+    implementation(
+        group = Libraries.kakaoGroup,
+        name = Libraries.kakaoName,
+        version = Libraries.kakaoVersion
+    )
 }

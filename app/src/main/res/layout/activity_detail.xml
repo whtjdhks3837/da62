@@ -74,7 +74,7 @@
 
             <ImageView
                 android:id="@+id/detail_thumbnail"
-                android:layout_width="142dp"
+                android:layout_width="@dimen/match_constraint"
                 android:layout_height="@dimen/match_constraint"
                 android:layout_marginTop="51dp"
                 android:transitionName="pair_thumbnail"
@@ -83,6 +83,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/detail_title"
+                app:layout_constraintWidth_percent=".394"
                 tools:src="@drawable/ic_illust_1" />
 
             <androidx.constraintlayout.widget.Guideline
@@ -188,12 +189,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
                 android:letterSpacing="0.07"
-                android:text="2일후"
+                android:text="@{viewModel.raiseDate}"
                 android:textColor="@color/green"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@id/detail_water_progress"
                 app:layout_constraintStart_toEndOf="@id/guide_progress_text"
-                app:layout_constraintTop_toTopOf="@id/detail_water_progress" />
+                app:layout_constraintTop_toTopOf="@id/detail_water_progress"
+                tools:text="2일후" />
 
             <TextView
                 android:id="@+id/detail_heart_text"
@@ -289,6 +291,18 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/detail_gallery_text" />
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminateTint="@color/colorGreen"
+                android:visibility="gone"
+                app:goneUnless="@{viewModel.visibleProgress}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="gone" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
